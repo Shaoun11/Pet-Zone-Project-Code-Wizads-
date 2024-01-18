@@ -3,7 +3,7 @@ import Headings from '../../Headings/Headings';
 import { Link } from 'react-router-dom';
 
 import Gallery from '../Gallery/Gallery';
-import Slider from '../Banner/Banner';
+
 
 const Home = () => {
     return (
@@ -20,8 +20,9 @@ const Home = () => {
                 
                 </div>
             </div>
-            <Slider></Slider>
+            <div className="max-w-7xl mx-auto">
             <Gallery></Gallery>
+            </div>
         </div>
     );
 };
