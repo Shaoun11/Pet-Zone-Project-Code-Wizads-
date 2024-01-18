@@ -2,6 +2,8 @@ import AllPetsSlider from '../AllPetsSlider/AllPetsSlider';
 import Headings from '../../Headings/Headings';
 import { Link } from 'react-router-dom';
 
+import Gallery from '../Gallery/Gallery';
+import Slider from '../Banner/Banner';
 
 const Home = () => {
     return (
@@ -18,7 +20,8 @@ const Home = () => {
                 
                 </div>
             </div>
-            
+            <Slider></Slider>
+            <Gallery></Gallery>
         </div>
     );
 };
