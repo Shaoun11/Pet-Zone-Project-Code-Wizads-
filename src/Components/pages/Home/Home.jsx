@@ -1,13 +1,16 @@
-import React from 'react';
 import Navber from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
+import Gallery from '../Gallery/Gallery';
+import Slider from '../Banner/Banner';
 
 const Home = () => {
     return (
         <div>
             <Navber></Navber>
-            <div className='mt-52 mb-52'>
-                Banner
+            <Slider></Slider>
+            
+            <div className="max-w-7xl mx-auto">
+            <Gallery></Gallery>
             </div>
             <Footer></Footer>
         </div>
