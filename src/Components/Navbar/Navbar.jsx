@@ -7,7 +7,7 @@ import {  Link, NavLink } from 'react-router-dom';
 
 
 
-const Navber = () => {
+const Navbar = () => {
       const { user, logout } = useContext;
       
   
@@ -19,7 +19,7 @@ const Navber = () => {
       };
     const link=<>
     <li><NavLink to={"/"}>Home</NavLink></li>
-   <li><NavLink to={"/allcontest"}> All Pet </NavLink></li>
+   <li><NavLink to={"/allPets"}> All Pet </NavLink></li>
     <li><NavLink to={"/about"}>About</NavLink></li>
     <li><Link to="/dashboard">Dashboard</Link></li>
 
@@ -119,4 +119,4 @@ const Navber = () => {
     );
 };
 
-export default Navber;
+export default Navbar;
