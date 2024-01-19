@@ -2,6 +2,8 @@ import Navber from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
 import Gallery from '../Gallery/Gallery';
 import Slider from '../Banner/Banner';
+import Message from '../Message/Message';
+import FAQ from '../FAQ/FAQ';
 
 const Home = () => {
     return (
@@ -12,6 +14,8 @@ const Home = () => {
             <div className="max-w-7xl mx-auto">
             <Gallery></Gallery>
             </div>
+            <Message></Message>
+            <FAQ></FAQ>
             <Footer></Footer>
         </div>
     );
