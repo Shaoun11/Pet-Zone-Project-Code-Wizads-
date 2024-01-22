@@ -88,12 +88,7 @@ const Navber = () => {
                 tabIndex={0}
                 className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
               >
-                <NavLink 
-                  to="/dashboard"
-                  className="px-4 py-2 hover:bg-base-300 rounded-lg"
-                >
-                  Dashboard
-                </NavLink>
+              
                
 
                 <div
