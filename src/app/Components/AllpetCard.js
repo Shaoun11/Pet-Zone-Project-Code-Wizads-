@@ -1,4 +1,7 @@
 "use client"
+
+import Link from "next/link";
+
 const AllpetCard = ({data}) => {
 
 
@@ -54,7 +57,7 @@ const AllpetCard = ({data}) => {
     <h5 className="block font-semibold text-base  leading-snug tracking-normal text-blue-gray-900 antialiased">
     Species: {species}
       </h5>
-     <button className='btn w-full text-white bg-[#ef4444] border-none hover:btn-warning hover:text-white mt-6 '>Details</button>
+    <Link href={`/AllPet/${_id}`}> <button className='btn w-full text-white bg-[#ef4444] border-none hover:btn-warning hover:text-white mt-6 '>Details</button></Link>
   </div>
  
 </div>
