@@ -1,4 +1,5 @@
 
+import Accessories from "./Components/Accessories";
 import Banner from "./Components/Banner";
 import BestPet from "./Components/BestPet";
 
@@ -12,7 +13,7 @@ export default function Home() {
     <main >
     <Banner></Banner>
     <BestPet></BestPet>
-   
+    <Accessories></Accessories>
     <Gallery></Gallery>
     <FAQSection></FAQSection>
     <Contact></Contact>
