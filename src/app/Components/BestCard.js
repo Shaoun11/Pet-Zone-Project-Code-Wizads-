@@ -1,4 +1,7 @@
-"use client"
+
+
+import Link from "next/link";
+
 const BestCard = ({petdata}) => {
 
 
@@ -53,10 +56,10 @@ const BestCard = ({petdata}) => {
       Gender <span className='text-red-500'>{gender}</span>
       </h5>
     </div>
-    <h5 className="block font-sans text-base font-mono leading-snug tracking-normal text-blue-gray-900 antialiased">
+    <h5 className="block text-base font-medium leading-snug tracking-normal text-blue-gray-900 antialiased">
     species:{species}
       </h5>
-     <button className='btn w-full text-white bg-[#ef4444] border-none hover:btn-warning hover:text-white mt-6 '>Details</button>
+     <Link href={`/AllPet/${_id}`}><button className='btn w-full text-white bg-[#ef4444] border-none hover:btn-warning hover:text-white mt-6 '>Details</button></Link>
   </div>
  
 </div>

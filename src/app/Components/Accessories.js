@@ -1,11 +1,24 @@
 "use client";
-
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 import Link from "next/link"; 
+import { useEffect } from 'react';
+
+
+
 
 const Accessories = () => {
-   
+
+
+  useEffect(() => {
+    Aos.init({
+      duration: 800,
+      delay: 200,
+      easing: 'ease-in-out',
+    });
+  }, []);
   return (
-    <div>
+    <div   >
      <div className="w-full mt-14 mb-20 flex justify-center items-end">
             <h1 className="text-2xl md:text-4xl font-bold">Accessories for Pets</h1>
             <div className="w-2 h-2 rounded-full ml-1 bg-secondary mb-1"></div>
@@ -23,6 +36,8 @@ const Accessories = () => {
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title">DreamCushion Orthopedic Dog Mattress</h2>
+ 
+  
           <p>Provide your furry friend with orthopedic support for a good night's sleep.</p>
          
         </div>

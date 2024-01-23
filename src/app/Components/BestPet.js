@@ -16,7 +16,7 @@ const BestPet = async() => {
             <div className="w-2 h-2 rounded-full ml-1 bg-secondary mb-1"></div>
              
           </div>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto gap-6'>
+          <div  className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto gap-6'>
                 {
                    slicedData.map(pet=><BestCard key={pet._id} petdata={pet}></BestCard>)
                 }

@@ -1,6 +1,6 @@
 const AccessoriesCard = ({ accessory }) => {
   const { _id, name, animal, category, description, image, price } = accessory;
-  console.log(_id, name, animal, category, description, image, price);
+
 
   return (
     <div className=" flex  h-[470px] max-w-[26rem]  flex-col rounded-xl bg-gray-100 bg-clip-border text-gray-700 shadow-lg">
