@@ -6,6 +6,7 @@ import BestPet from "./Components/BestPet";
 import Contact from "./Components/Contact";
 import FAQSection from "./Components/FAQ";
 import Gallery from "./Components/Gallery";
+import OurServices from "./Components/OurService";
 
 
 export default function Home() {
@@ -13,7 +14,10 @@ export default function Home() {
     <main >
     <Banner></Banner>
     <BestPet></BestPet>
+
+
     <Accessories></Accessories>
+    <OurServices></OurServices>
     <Gallery></Gallery>
     <FAQSection></FAQSection>
     <Contact></Contact>

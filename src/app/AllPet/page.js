@@ -1,4 +1,5 @@
 
+import PetBanner from "../Components/PetBanner";
 import AllpetCard from "../Components/AllpetCard";
 
 
@@ -10,6 +11,7 @@ const page = async () => {
 
     return (
         <div>
+            <PetBanner></PetBanner>
               <div className="w-full  mt-10 mb-20 flex justify-center items-end">
             <h1 className="text-2xl md:text-4xl font-bold">Our All Collection</h1>
             <div className="w-2 h-2 rounded-full ml-1 bg-secondary mb-1"></div>
