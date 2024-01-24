@@ -1,4 +1,4 @@
-
+"use client";
 import Accessories from "./Components/Accessories";
 import Banner from "./Components/Banner";
 import BestPet from "./Components/BestPet";
