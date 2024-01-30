@@ -10,11 +10,11 @@ import {
 
 const Footer = () => {
   return (
-    <div className="w-full bg-[#1d1d1d] pt-16 ">
+    <div className="w-full bg-[#dbd4e4] pt-16 ">
       <div className="max-container flex flex-col md:flex-row px-4 md:px-0 gap-10 md:gap-0">
         <div className="text-center md:w-1/2">
-          <img src="https://i.ibb.co/p1VnBbN/Pet-Shop-Logo-4.png" alt="logo" className="md:w-[250px] mx-auto h-auto" />
-          <p className="text-slate-300 font-medium">
+          <img src="https://i.ibb.co/9gMJTsy/Picsart-24-01-25-00-48-30-844.png" alt="logo" className="md:w-[250px] mx-auto h-auto" />
+          <p className="text-black font-medium">
             Sit amet conse ctetur adipisicing elit, sed doe eiusmod tempor
             incididunt ut laborea aaaeht dolore magna aliqua.
           </p>
@@ -42,27 +42,27 @@ const Footer = () => {
           </div>
         </div>
         <div className=" grid grid-cols-2 md:grid-cols-3 gap-5 w-full  content-center justify-items-center">
-          <div className="text-white">
-            <h1 className="text-white font-bold text-lg">Quick Links</h1>
+          <div className="text-black">
+            <h1 className="text-black font-bold text-lg">Quick Links</h1>
             <hr className="w-full border border-[#ef4444]" />
-            <p className="text-base font-medium text-slate-200 mt-5 cursor-pointer">All Pets</p>
-            <p className="text-base font-medium text-slate-200 cursor-pointer mt-1">My Pets</p>
-            <p className="text-base font-medium text-slate-200 cursor-pointer mt-1">Add Pets</p>
-            <p className="text-base font-medium text-slate-200 cursor-pointer mt-1">Blogs</p>
+            <p className="text-base font-medium text-black mt-5 cursor-pointer">All Pets</p>
+            <p className="text-base font-medium text-black cursor-pointer mt-1">My Pets</p>
+            <p className="text-base font-medium text-black cursor-pointer mt-1">Add Pets</p>
+            <p className="text-base font-medium text-black cursor-pointer mt-1">Blogs</p>
           </div>
           <div className="text-white">
-            <h1 className="text-white font-bold text-lg">Our Company</h1>
+            <h1 className="text-black font-bold text-lg">Our Company</h1>
             <hr className="w-full border border-[#ef4444]" />
-            <p className="cursor-pointer mt-5 text-base font-medium text-slate-200">About Us</p>
-            <p className="cursor-pointer mt-1 text-base font-medium text-slate-200">FAQ</p>
-            <p className="cursor-pointer mt-1 text-base font-medium text-slate-200">Contract</p>
-            <p className="cursor-pointer mt-1 text-base font-medium text-slate-200">Location</p>
+            <p className="cursor-pointer mt-5 text-base font-medium text-black">About Us</p>
+            <p className="cursor-pointer mt-1 text-base font-medium text-black">FAQ</p>
+            <p className="cursor-pointer mt-1 text-base font-medium text-black">Contract</p>
+            <p className="cursor-pointer mt-1 text-base font-medium text-black">Location</p>
           </div>
           <div className="text-white w-full md:w-fit text-center md:text-start col-span-2 md:col-auto">
-            <h1 className="text-white font-bold text-lg">Subscribe</h1>
+            <h1 className="font-bold text-black text-lg">Subscribe</h1>
             <hr className="w-full border border-[#ef4444]" />
             <div className="mt-8">
-                <input type="email" className="w-full outline-none h-8 rounded-full px-4 text-black" placeholder="Enter email"/>
+                <input type="email" className="w-full outline-none h-8 bg-white  rounded-full px-4 text-black" placeholder="Enter email"/>
                 <button className="btn text-white bg-[#ef4444] border-none hover:btn-warning hover:text-white mt-3">Subscribe</button>
             </div>
           </div>

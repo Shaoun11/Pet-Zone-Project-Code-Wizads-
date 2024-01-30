@@ -1,10 +1,15 @@
-import { Inter } from "next/font/google";
+import { Fira_Sans } from "next/font/google";
 import "./globals.css";
 import Navber from "./Components/Header";
 import Footer from "./Components/Footer";
 import AuthProvider from "./Provider/AuthProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const firasans = Fira_Sans({ 
+  subsets: ["latin"],
+  weight:["100","200","300","400","500","600","700","800","900"],
+  style:['normal','italic']
+
+});
 
 export const metadata = {
   title: "Pet Zone Website",
@@ -14,7 +19,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className} >
+      <body className={firasans.className} >
         <AuthProvider>
           <Navber></Navber>
           {children}

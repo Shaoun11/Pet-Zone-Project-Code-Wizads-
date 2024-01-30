@@ -5,6 +5,7 @@ import BestPet from "./Components/BestPet";
 
 import Contact from "./Components/Contact";
 import FAQSection from "./Components/FAQ";
+import FeturedAccecories from "./Components/FeturedAccecories";
 import Gallery from "./Components/Gallery";
 import OurServices from "./Components/OurService";
 
@@ -15,8 +16,7 @@ export default function Home() {
     <Banner></Banner>
     <BestPet></BestPet>
 
-
-    <Accessories></Accessories>
+<FeturedAccecories></FeturedAccecories>
     <OurServices></OurServices>
     <Gallery></Gallery>
     <FAQSection></FAQSection>

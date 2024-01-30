@@ -36,10 +36,10 @@ const galleryImgRevers = [
 
 const Gallery = () => {
   return (
-    <div className="max-container my-10 md:my-20">
+    <div className="max-container max-w-6xl mx-auto  my-10 md:my-20">
       <div className="w-full flex justify-center items-end">
         <h1 className="text-2xl md:text-4xl font-bold">Gallery</h1>
-        <div className="w-2 h-2 rounded-full bg-secondary mb-1"></div>
+        <div className="w-2 h-2 rounded-full bg-red-500 mb-1"></div>
       </div>
       <div className="my-10 relative rounded-xl shadow-xl">
         <div className="h-[200px] w-full px-5 pt-5">
