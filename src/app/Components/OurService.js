@@ -6,7 +6,7 @@ const OurServices = () => {
     <div  className="my-10 max-w-7xl mx-auto md:mt-20 md:mb-20 max-container">
       <div className="w-full flex justify-center items-end">
         <h1 className="text-2xl md:text-4xl font-bold">Our Services</h1>
-        <div className="w-2 h-2 rounded-full bg-secondary mb-1 ml-1"></div>
+        <div className="w-2 h-2 rounded-full bg-red-500 mb-1 ml-1"></div>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 py-10 mt-5 gap-6 px-2 md:px-0">
         <div className="flex justify-between items-center">

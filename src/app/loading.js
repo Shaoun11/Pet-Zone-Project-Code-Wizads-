@@ -2,7 +2,12 @@ import React from 'react';
 
 const loading = () => {
     return (
-        <div className='text-center '><span className=" bg-red-500 mt-72 loading loading-ring loading-lg"></span><p>Loding...</p></div>
+
+<div className="h-screen bg-white">
+<div className="flex justify-center items-center h-full">
+  <img className="h-[270px] w-[360px]" src="https://hackernoon.imgix.net/images/0*4Gzjgh9Y7Gu8KEtZ.gif" alt="" />
+</div>
+</div>
     );
 };
 

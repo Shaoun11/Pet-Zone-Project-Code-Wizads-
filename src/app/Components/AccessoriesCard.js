@@ -1,17 +1,17 @@
+/* eslint-disable @next/next/no-img-element */
 const AccessoriesCard = ({ accessory }) => {
   const { _id, name, animal, category, description, image, price } = accessory;
 
-
   return (
-    <div className=" flex  h-[470px] max-w-[26rem]  flex-col rounded-xl bg-gray-100 bg-clip-border text-gray-700 shadow-lg">
+    <div className=" flex  max-w-[26rem]  flex-col rounded-xl bg-gray-100 bg-clip-border text-gray-700 shadow-lg ">
       <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
         <img
-          className="w-[400px] h-full  "
+          className="w-[400px] h-[200px] object-cover "
           src={image}
           alt="ui/ux review check"
         />
       </div>
-      <div className="p-6">
+      <div className="p-6 ">
         <div className="mb- flex items-center justify-between">
           <h5 className="block font-sans text-xl font-medium leading-snug tracking-normal text-blue-gray-900 antialiased">
             {name}
@@ -51,12 +51,10 @@ const AccessoriesCard = ({ accessory }) => {
         <h5 className="block font-semibold text-base  leading-snug tracking-normal text-blue-gray-900 antialiased">
           Animal: {animal}
         </h5>
-        <div className="flex flex-row justify-center items-center gap-x-2">
-          <button className="btn btn-success w-1/2 text-white border-none hover:btn-warning hover:text-white mt-6 ">
-            Buy Now
-          </button>
-          <button className="btn btn-info w-1/2 text-white border-none hover:btn-warning hover:text-white mt-6 ">
-            Add To Cart
+        <div className=" py-5">
+          {" "}
+          <button className="btn w-full text-white bg-[#ef4444] border-none hover:btn-warning hover:text-white mt-6 ">
+            Details
           </button>
         </div>
       </div>

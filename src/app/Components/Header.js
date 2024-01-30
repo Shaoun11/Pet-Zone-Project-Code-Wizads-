@@ -24,7 +24,8 @@ const Navber = () => {
     <li><Link href={"/"}>Home</Link></li>
     <li><Link href={"/AllPet"}>All Pet</Link></li>
     <li><Link href={"/AllAccessories"}>Accessories</Link></li>
-    <li><Link href={"/"}>Home</Link></li>
+    <li><Link href={"/about"}>About</Link></li>
+    <li><Link href={"/contact"}>Contact</Link></li>
   
 
   </>
@@ -58,7 +59,7 @@ const Navber = () => {
 
           <img
             className="lg:w-28 md:w-32 w-20"
-            src="https://i.ibb.co/YXgBvNY/Pet-Shop-Logo-7.png"
+            src="https://i.ibb.co/WcRsrJ4/Picsart-24-01-25-00-49-42-732.png"
             alt=""
           />
           <a className="text-gray-600 normal-case font-bold mt-1 -ml-3 lg:text-sm md:text-sm text-[10px] ">
