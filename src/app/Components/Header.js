@@ -1,6 +1,8 @@
 "use client"
 import Link from 'next/link';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../Provider/AuthProvider';
+import { FaUserAlt } from 'react-icons/fa';
 
 
 
@@ -11,14 +13,19 @@ import { useContext } from 'react';
 
 
 const Navber = () => {
-      const { user, logout } = useContext;
+  const [isOpenMenu, setOpenMenu] = useState(false);
+  const [profile, setProfile] = useState(false);
+  const handleProfile = () => {
+    setProfile(!profile);
+  };
+      const { user, logOut } = useContext(AuthContext);
       
   
 
 
 
       const handelSingout = () => {
-        logout().then().catch();
+        logOut().then().catch();
       };
     const link=<>
     <li><Link href={"/"}>Home</Link></li>
@@ -69,50 +76,66 @@ const Navber = () => {
         <div className="navbar-center  hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{link}</ul>
         </div>
-        <div className="lg:flex  md:flex gap-3 navbar-end">
-    
-          {user?.email ? (
-            <div className="dropdown dropdown-end ">
-              <label tabIndex={0} className="cursor-pointer">
-                <div className="flex gap-2">
-                  <div className="mt-2">
-                    <p>{user?.displayName}</p>
-                  </div>
-                  <div className="avatar">
-                    <div className="w-10 rounded-full">
-                      <img src={user?.photoURL} />
-                    </div>
-                  </div>
-                </div>
-              </label>
-              <div
-                tabIndex={0}
-                className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-              >
-              
+        <div className='className="lg:flex  md:flex mr-5  gap-3 navbar-end'>
+            {user ? (
+              <div  onClick={handleProfile} className='flex gap-2'>
+              <div className='mt-2'>
+                     <p>{user?.displayName}</p>
+                   </div>
+                   <div className="avatar">
+                   <div className="w-10 rounded-full">
+                     <img src={user?.photoURL}/>
+                   </div>
                
-
-                <div
-                  onClick={handelSingout}
-                  className="cursor-pointer text-red-500 px-4 py-2 hover:bg-base-300 rounded-lg"
-                >
-                  Logout
-                </div>
+                 </div>
               </div>
-            </div>
-          ) : (
-            <div>
+            ) : (
               <Link
-                href={"/login"}
-                className=
-                    "btn btn-outline cursor-pointer items-center justify-center rounded-md border py-2 px-8 text-center text-gray-500 transition duration-150 ease-in-out hover:translate-y-1 hover:bg-[#ef4444] hover:text-white"
-                
+                href="login"
+                className="px-4 py-2 text-sm bg-red-500 rounded-full duration-300 text-white font-semibold"
               >
                 Login
               </Link>
+            )}
+          </div>
+                  {/* user profile */}
+              <div className='flex'>
+              <div
+            onClick={handleProfile}
+            className={`w-[280px] z-10 h-fit absolute  rounded-md shadow-md mr-9 mt-3 bg-opacity-50  backdrop-blur-md  hover:shadow-2xl bg-[#eae4e4] py-8 px-5 ${
+              profile ? "-top-0 left-20 md:left-auto md:top-12 md:right-7 " : "hidden"
+            } `}
+          >
+            <div className="w-[120px] h-[120px] mx-auto rounded-full border-2 border-red-500 overflow-hidden">
+              <img
+                src={user?.photoURL}
+                className="w-[120px] h-[120px] mx-auto rounded-full"
+                alt="profile"
+              />
             </div>
-          )}
-        </div>
+            <div className="text-center  mt-5 ">
+              <h1 className="text-base font-bold">Name: {user?.displayName}</h1>
+              <p className="text-xs mt-3">Email: {user?.email}</p>
+              <p
+                className={
+                  user?.emailVerified
+                    ? "text-xs text-green-500 mt-1"
+                    : "text-xs text-red-500 mt-1"
+                }
+              >
+                {user?.emailVerified
+                  ? "Your Email has been verified!"
+                  : "Your Email is not verified!"}
+              </p>
+              <div
+                className="mt-4 my-btn"
+                onClick={handelSingout}
+              >
+               <button className='bg-red-500 btn btn-outline w-full text-white border-none' > Logout</button>
+              </div>
+            </div>
+          </div>
+              </div>
       </div>
     );
 };
