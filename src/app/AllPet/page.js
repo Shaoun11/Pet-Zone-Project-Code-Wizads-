@@ -1,6 +1,8 @@
 
 import PetBanner from "../Components/PetBanner";
 import AllpetCard from "../Components/AllpetCard";
+import Navber from "../Components/Header";
+import Footer from "../Components/Footer";
 
 
 const page = async () => {
@@ -11,6 +13,7 @@ const page = async () => {
 
     return (
         <div>
+            <Navber></Navber>
             <PetBanner></PetBanner>
               <div className="w-full  mt-10 mb-20 flex justify-center items-end">
             <h1 className="text-2xl md:text-4xl font-bold">Our All Collection</h1>
@@ -23,6 +26,7 @@ const page = async () => {
             }
              
            </div>
+           <Footer></Footer>
         </div>
     );
 };

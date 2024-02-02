@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 
 
 
-const page = () => {
+const Page = () => {
     // const axiosPublic = useAxiosPublic();
 
     // const { data: users = [], refetch } = useQuery({
@@ -26,7 +26,7 @@ const page = () => {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    'http://localhost:5001/users'
+                    'https://pet-zone-project-next-js.vercel.app/users'
                 );
                 const data = await response.json();
                 setAllUsers(data);
@@ -39,7 +39,7 @@ const page = () => {
 
 
     const handleMakeAdmin = user => {
-        fetch(`http://localhost:5001/users/admin/${user._id}`, {
+        fetch(`https://pet-zone-project-next-js.vercel.app/users/admin/${user._id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"
@@ -68,13 +68,20 @@ const page = () => {
 
 
     return (
-        <Dashboard>
+       <Dashboard>
+
+           
+<div>
+
+<div>
+                 <h1 className='text-5xl font-semibold mt-5 mb-4 text-center'>Our  All <span className='text-red-500'>User</span></h1>
+             </div>
             {/* <h1 className='text-center font-semibold text-3xl'>Total Users : {allUsers.length}</h1> */}
             <div>
                 <div className="overflow-x-auto">
-                    <table className="table table-zebra">
+                    <table className="table ">
                         {/* head */}
-                        <thead>
+                        <thead className='text-gray-700'>
                             <tr>
                                 <th></th>
                                 <th>Image</th>
@@ -109,8 +116,9 @@ const page = () => {
                     </table>
                 </div>
             </div>
-        </Dashboard>
+            </div>
+       </Dashboard>
     );
 };
 
-export default page;
+export default Page;

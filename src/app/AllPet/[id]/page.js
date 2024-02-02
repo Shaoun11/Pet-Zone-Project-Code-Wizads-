@@ -1,3 +1,5 @@
+import Footer from "@/app/Components/Footer";
+import Navber from "@/app/Components/Header";
 
 
 export default async function petdetails({params}){
@@ -10,6 +12,8 @@ export default async function petdetails({params}){
     const {  _id,name,species,age,gender,color,description,image,adoption_fee,available,}=data
 
    return(
+    <>
+    <Navber></Navber>
     <div>
           <section  className="text-gray-700 body-font overflow-hidden bg-white">
   <div  className=" lg:ml-12 lg:mr-12 md:ml-12 md:mr-12 py-24 mx-auto">
@@ -157,5 +161,8 @@ export default async function petdetails({params}){
 </section>
       
     </div>
+    <Footer></Footer>
+    
+    </>
    )
 }

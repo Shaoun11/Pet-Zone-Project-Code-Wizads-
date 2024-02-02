@@ -1,10 +1,14 @@
 import React from 'react';
 import Contact from '../Components/Contact';
+import Navber from '../Components/Header';
+import Footer from '../Components/Footer';
 
 
 const ContactPage = () => {
     return (
      
+        <>
+        <Navber></Navber>
         <div>
               <div className='bg-[#f0f8ff] pb-20'>
             <section className=" ">
@@ -76,6 +80,9 @@ const ContactPage = () => {
         </div>
       
         </div>
+
+        <Footer></Footer>
+        </>
         
      
         

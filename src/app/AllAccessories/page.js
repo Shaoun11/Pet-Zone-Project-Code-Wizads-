@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from 'react';
 import AccessoriesCard from '../Components/AccessoriesCard';
+import Navber from '../Components/Header';
+import Footer from '../Components/Footer';
 
 const AllAccessories = () => {
   const [accessories, setAccessories] = useState([]);
@@ -53,6 +55,8 @@ const AllAccessories = () => {
   });
 
   return (
+    <>
+    <Navber></Navber>
     <div className='flex'>
       <div className='h-full hidden md:block w-1/6 md:w-2/6 lg:w-1/5'>
         <div className='pl-10'>
@@ -141,6 +145,9 @@ const AllAccessories = () => {
         }
       </div>
     </div>
+
+    <Footer></Footer>
+    </>
   );
 };
 

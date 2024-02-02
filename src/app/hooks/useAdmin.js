@@ -1,39 +1,26 @@
-import { useContext, useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+
+import axios from "axios";
+import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import useAxiosPublic from "./useAxiosPublic";
+
+
+
 
 const useAdmin = () => {
-    const { user } = useContext(AuthContext);
-    const axiosPublic = useAxiosPublic();
-    const [isAdmin, setIsAdmin] = useState(null);
-    const [isAdminLoading, setIsAdminLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchAdminStatus = async () => {
-            try {
-                const res = await fetch(`/users/admin/${user.email}`);
-                if (!res.ok) {
-                    throw new Error(`HTTP error! Status: ${res.status}`);
-                }
-                const data = await res.json();
-                console.log(data);
-                setIsAdmin(data?.admin);
-            } catch (error) {
-                console.error('Error during fetch:', error);
-            } finally {
-                setIsAdminLoading(false);
-            }
-        };
-
-        if (user?.email) {
-            fetchAdminStatus();
-        } else {
-            setIsAdmin(null);
-            setIsAdminLoading(false);
+    const { user, loader } = useContext(AuthContext);
+ 
+    const { data: isAdmin, isPending: isAdminLoading } = useQuery({
+        queryKey: [user?.email, 'isAdmin'],
+        enabled: !loader,
+        queryFn: async () => {
+            console.log('asking or checking is admin', user)
+            const res = await axios.get(`https://pet-zone-project-next-js.vercel.app/users/Admin/${user.email}`);
+            console.log(res.data);
+            return res.data?.admin;
         }
-    }, [user?.email]);
-
-    return [isAdmin, isAdminLoading];
+    })
+    return [isAdmin, isAdminLoading]
 };
 
 export default useAdmin;

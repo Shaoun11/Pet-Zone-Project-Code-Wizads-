@@ -1,8 +1,14 @@
 import React from 'react';
+import Navber from '../Components/Header';
+import Footer from '../Components/Footer';
 
 const About = () => {
     return (
-       <div className='bg-[#f0f8ff]'>
+        <>
+          <Navber>
+    </Navber>
+     
+    <div className='bg-[#f0f8ff]'>
         <section className="flex  bg-[#f0f8ff] lg:h-screen font-poppins  ">
         <div className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-6 md:px-6">
             <div className="px-4 mb-10 md:text-center md:mb-20">
@@ -315,6 +321,11 @@ const About = () => {
         </div>
 
        </div>
+
+
+    <Footer></Footer>
+        </>
+  
     );
 };
 

@@ -3,6 +3,7 @@ import "./globals.css";
 import Navber from "./Components/Header";
 import Footer from "./Components/Footer";
 import AuthProvider from "./Provider/AuthProvider";
+import QueryClientProvider from "./Provider/TanstackProvider";
 
 const firasans = Fira_Sans({ 
   subsets: ["latin"],
@@ -20,11 +21,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={firasans.className} >
+        <QueryClientProvider>
         <AuthProvider>
-          <Navber></Navber>
+       
           {children}
-          <Footer></Footer>
+        
         </AuthProvider>
+        </QueryClientProvider>
       </body>
     </html>
   );
