@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/alt-text */
 import { FiSearch } from 'react-icons/fi';
 import { FaSearch } from "react-icons/fa";
 const PetBanner = () => {

@@ -1,81 +1,151 @@
 "use client"
 import React, { useRef, useState } from "react";
-
+import { motion } from "framer-motion";
+import { useEffect} from "react";
 
 
 const Banner = () => {
   return (
-    <section className="pb-20 pt-32">
-      <section className="text-black body-font">
-        <div className="container mx-auto flex px-5 py-5 md:flex-row flex-col items-center">
-          <div className="lg:flex-grow flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-            <p className="leading-relaxed opacity-50 ">
-              Are You Looking For A Pet ?
-            </p>
-            <h1 className="title-font tracking-wide sm:text-3xl md:text-6xl xl:text-7xl mb-4 font-bold ">
-              Pet Zone
-            </h1>
-            <p className="mb-8 leading-relaxed opacity-50 ">
-              Pet adoption is the process of taking responsibility for a pet
-              that needs a home and providing it with a caring and loving
-              environment.
-            </p>
-            <div className="flex justify-center">
-              <button className="inline-flex text-white bg-[#ef4444] py-2 px-4 focus:outline-none hover:bg-opacity-80 rounded text-sm">
-                Shoping
-              </button>
-            </div>
-          </div>
-          <div
-            id="pattern"
-            className="w-32 sm:w-40 lg:max-w-xl lg:w-full md:w-32 xl:w-5/6 bg-contain bg-no-repeat md:ml-40 xl:mr-16"
-          >
-            <div className="w-full flex gap-3 justify-center ">
-              <img
-                className="object-cover w-52 h-36 object-center rounded-xl "
-                alt="hero"
-                src="https://i.ibb.co/80FtTY9/pexels-pixabay-208773.jpg"
-              />
-              <img
-                className="object-cover w-52 h-36 object-center rounded-xl "
-                alt="hero"
-                src="https://i.ibb.co/7QRB9mJ/pexels-nataliya-vaitkevich-5122186-1.jpg"
-              />
-            </div>
-            <div className="w-full h- flex gap-2 justify-center items-center my-2">
-              <img
-                className="object-cover w-52 h-36 object-center rounded-xl "
-                alt="hero"
-                src="https://i.ibb.co/dQhWWTg/pexels-photo-4016992.jpg"
-              />
-              <img
-                className="object-cover w-52 h-36 object-center rounded-xl "
-                alt="hero"
-                src="https://i.ibb.co/Yp0stTh/pexels-damir-14815030.jpg"
-              />
-              <img
-                className="object-cover w-52 h-36 object-center rounded-xl "
-                alt="hero"
-                src="https://i.ibb.co/JtvCsbc/pexels-valeria-boltneva-9157283.jpg"
-              />
-            </div>
-            <div className="w-full flex gap-3 justify-center">
-              <img
-                className="object-cover w-52 h-36 object-center rounded-xl "
-                alt="hero"
-                src="https://i.ibb.co/Ms9WzZQ/pexels-caio-56733.jpg"
-              />
-              <img
-                className="object-cover w-52 h-36 object-center rounded-xl "
-                alt="hero"
-                src="https://i.ibb.co/n6zRZDC/pexels-luciann-photography-3874703.jpg"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+    <section className="w-full px-8 py-12 grid grid-cols-1 md:grid-cols-2 items-center gap-8 max-w-6xl mx-auto">
+      <div>
+        <span className="block mb-4 text-xs md:text-sm text-[#ef4444] font-medium">
+          Are You Looking For A Pet ?
+        </span>
+        <h3 className="text-4xl md:text-6xl font-semibold">Pet Zone</h3>
+        <p className="text-base md:text-lg text-slate-700 my-4 md:my-6">
+          Pet adoption is the process of taking responsibility for a pet that
+          needs a home and providing it with a caring and loving environment.
+        </p>
+        <button className="bg-[#ef4444] text-white font-medium py-2 px-4 rounded transition-all hover:bg-indigo-600 active:scale-95">
+          Find a class
+        </button>
+      </div>
+      <ShuffleGrid />
     </section>
   );
+};
+
+const shuffle = (array) => {
+  let currentIndex = array.length,
+    randomIndex;
+
+  while (currentIndex != 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+};
+
+const squareData = [
+  {
+    id: 1,
+    src: "https://images.unsplash.com/photo-1547347298-4074fc3086f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+  },
+  {
+    id: 2,
+    src: "https://images.unsplash.com/photo-1510925758641-869d353cecc7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  },
+  {
+    id: 3,
+    src: "https://images.unsplash.com/photo-1629901925121-8a141c2a42f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  },
+  {
+    id: 4,
+    src: "https://images.unsplash.com/photo-1580238053495-b9720401fd45?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  },
+  {
+    id: 5,
+    src: "https://images.unsplash.com/photo-1569074187119-c87815b476da?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1325&q=80",
+  },
+  {
+    id: 6,
+    src: "https://images.unsplash.com/photo-1556817411-31ae72fa3ea0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+  },
+  {
+    id: 7,
+    src: "https://images.unsplash.com/photo-1599586120429-48281b6f0ece?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+  },
+  {
+    id: 8,
+    src: "https://plus.unsplash.com/premium_photo-1671436824833-91c0741e89c9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+  },
+  {
+    id: 9,
+    src: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+  },
+  {
+    id: 10,
+    src: "https://images.unsplash.com/photo-1610768764270-790fbec18178?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+  },
+  {
+    id: 11,
+    src: "https://images.unsplash.com/photo-1507034589631-9433cc6bc453?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=684&q=80",
+  },
+  {
+    id: 12,
+    src: "https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=882&q=80",
+  },
+  {
+    id: 13,
+    src: "https://images.unsplash.com/photo-1560089000-7433a4ebbd64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+  },
+  {
+    id: 14,
+    src: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80",
+  },
+  {
+    id: 15,
+    src: "https://images.unsplash.com/photo-1606244864456-8bee63fce472?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=681&q=80",
+  },
+  {
+    id: 16,
+    src: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1820&q=80",
+  },
+];
+
+const generateSquares = () => {
+  return shuffle(squareData).map((sq) => (
+    <motion.div
+      key={sq.id}
+      layout
+      transition={{ duration: 1.5, type: "spring" }}
+      className="w-full h-full"
+      style={{
+        backgroundImage: `url(${sq.src})`,
+        backgroundSize: "cover",
+      }}
+    ></motion.div>
+  ));
+};
+
+const ShuffleGrid = () => {
+  const timeoutRef = useRef(null);
+  const [squares, setSquares] = useState(generateSquares());
+
+  useEffect(() => {
+    shuffleSquares();
+
+    return () => clearTimeout(timeoutRef.current);
+  }, []);
+
+  const shuffleSquares = () => {
+    setSquares(generateSquares());
+
+    timeoutRef.current = setTimeout(shuffleSquares, 3000);
+  };
+
+  return (
+    <div className="grid grid-cols-4 grid-rows-4 h-[450px] gap-1">
+      {squares.map((sq) => sq)}
+    </div>
+  );
+  
 };
 
 export default Banner;
