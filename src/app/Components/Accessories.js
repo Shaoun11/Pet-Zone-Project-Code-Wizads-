@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import Aos from 'aos';
 import 'aos/dist/aos.css';
