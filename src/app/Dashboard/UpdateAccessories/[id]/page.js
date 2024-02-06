@@ -1,70 +1,62 @@
 "use client"
 import React from 'react';
-import Dashboard from "../page";
-import useAxiosPublic from '@/app/hooks/useAxiosPublic';
+import Dashboard from "../../page";
+// import useAxiosPublic from '@/app/hooks/useAxiosPublic';
+import Swal from 'sweetalert2';
 
-import { ToastContainer, toast } from 'react-toastify';
+// import { ToastContainer, toast } from 'react-toastify';
 
-import 'react-toastify/dist/ReactToastify.css';
+// import 'react-toastify/dist/ReactToastify.css';
 
-const Page = () => {
-    const axiosPublic = useAxiosPublic();
+const Page = ({params}) => {
+    const {animalName} = params;
+    console.log(animalName)
+   
 
-    const notify = () => toast("Product Added!");
-    const handleAddProducts = (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const name = form.name.value;
+// handleFunction
+const handleUpdateProduct = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
         const image = form.image.value;
         const animal = form.animal.value;
         const category = form.category.value;
         const price = form.price.value;
         const description = form.description.value;
-        const newProducts = { name, image, animal, category, price, description };
-        console.log(newProducts);
-    
-        // const productInfo = {
-        //     productTitle: name,
-        //     productDescription: description,
-        //     productDetails: image,
-        //     productCategory: category,
-        //     productPrice: price,
-        //     productAnimal: animal,
-    
-        //   }
 
-    //       // Sending product to the server
-    // fetch('http://localhost:5001/petshop',{
-    //     method: 'POST',
-    //     headers: {
-    //       'content-type': 'application/json'
-    //     },
-    //     body: JSON.stringify(productInfo)
-    //   })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     console.log(data)
-    //     if(data.insertedId){
-    //         console.log('Product Added to Database')
-    //         notify();
-  
-    //     }
-    //   })
-          axiosPublic.post('/petshop',newProducts)
-          .then(res => {
-            if(res.data.insertedId){
-              console.log('Product Added to Database')
-              notify();
-            }
+    const updatedProduct = { name, image, animal, category, price, description };
+    console.log(updatedProduct);
+
+    // Sending updated assignment to the server
+    fetch(`http://localhost:5001/petshop/${_id}`,{
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json'
+        },
+        body: JSON.stringify(updatedProduct)
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        if(data.modifiedCount > 0){
+          Swal.fire({
+            title: 'Congratulations',
+            text: 'Product Update Successful!',
+            icon: 'success',
+            confirmButtonText: 'Cool'
           })
-          .catch(error => console.log(error))
-        
-      };
+  
+        }
+      })
+    };
+
 
 
     return (
         <Dashboard>
             <div>
+                Update Accessories
+                <div>
                 <div className="lg:flex   md:flex items-center justify-center">
              <div>
                  <img className="h-[350px]" src="https://i.ibb.co/HnP9Qdj/360-F-254878309-P62oik-Pc8zu9-TQjr4j2-Xp-Ekl5d-FBa6ep-removebg-preview.png" alt="" />
@@ -72,8 +64,9 @@ const Page = () => {
                <div className="flex  items-center justify-center p-12">
      
      <div className="mx-auto w-full max-w-[550px]">
-     <h1 className="text-3xl text-center font-semibold">Add New <span className='text-red-500'>Accessories</span> For <span className='text-red-500'>Sale</span> </h1>
-       <form onSubmit={handleAddProducts} >
+     <h1 className="text-3xl text-center font-semibold">Update <span className='text-red-500'>Your </span> Desired <span className='text-red-500'>Product</span> </h1>
+       <form onSubmit={handleUpdateProduct} >
+       {/* <form > */}
          <div className="mb-5 mt-6">
            <label
              for="name"
@@ -178,19 +171,19 @@ const Page = () => {
           
              className="hover:shadow-form rounded-md bg-red-500 py-3 px-8 text-base font-semibold text-white outline-none"
            >
-            Add Product
+            Update Product
            </button>
          </div>
        </form>
-       <ToastContainer position="top-right"  />
+       {/* <ToastContainer position="top-right"  /> */}
      </div>
      
      </div>
      
            </div>
             </div>
+            </div>
         </Dashboard>
-
     );
 };
 
