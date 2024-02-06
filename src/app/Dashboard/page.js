@@ -59,7 +59,7 @@ const MainDashboard = ({ children }) => {
                   <Link href={"/Dashboard/AdminProfile"}>Admin Profile</Link>
                 </li>
                 <li>
-                  <Link href={"/Dashboard/users"}>All Users</Link>
+                  <Link href={"/Dashboard/Users"}>All Users</Link>
                 </li>
                 <li>
                   <Link href={"/Dashboard/AddPet"}>Add Pet</Link>
@@ -69,6 +69,9 @@ const MainDashboard = ({ children }) => {
                 </li>
                 <li>
                   <Link href={"/Dashboard/AddAccessories"}>Add Accessories</Link>
+                </li>
+                <li>
+                  <Link href={"/Dashboard/AvailableAccessories"}>Available Accessories</Link>
                 </li>
               </>
               :
