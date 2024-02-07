@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Dashboard from "../page";
-import React, { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
+import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const Page = () => {
   const [allAccessories, setAllAccessories] = useState([]);
@@ -21,8 +21,8 @@ const Page = () => {
     fetchData();
   }, []);
 
-//   Delete Operation
-const handleDelete = _id => {
+  //   Delete Operation
+  const handleDelete = (_id) => {
     console.log(_id);
     Swal.fire({
       title: "Are you sure?",
@@ -31,35 +31,32 @@ const handleDelete = _id => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        
-        console.log('delete confirmed')
+        console.log("delete confirmed");
 
-        fetch(`http://localhost:5001/petshop/${_id}`,{
-          method: 'DELETE'
+        fetch(`http://localhost:5001/petshop/${_id}`, {
+          method: "DELETE",
         })
-        .then(res => res.json())
-        .then(data => {
-          console.log(data);
-          if(data.deletedCount > 0){
-            Swal.fire({
-          title: "Deleted!",
-          text: "Assignment has been deleted. Please Reload the page to see the results",
-          icon: "success"
-        });
-          }
-        })
-        
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Assignment has been deleted. Please Reload the page to see the results",
+                icon: "success",
+              });
+            }
+          });
       }
     });
-    
-  }
+  };
 
   return (
     <Dashboard>
-        <div>
+      <div>
         <div>
           <h1 className="text-5xl font-semibold mt-5 mb-4 text-center">
             Our All <span className="text-red-500">Available Products</span>
@@ -93,14 +90,26 @@ const handleDelete = _id => {
                     </div>
                     <td>{allAccessory.name}</td>
                     {/* <td>{allAccessorie.email}</td> */}
-                    <td><button onClick={() => handleDelete(allAccessory._id)} className="btn btn-ghost text-red-500 text-lg">
-                         Delete Product
+                    <td>
+                      <button
+                        onClick={() => handleDelete(allAccessory._id)}
+                        className="btn btn-ghost text-red-500 text-lg"
+                      >
+                        Delete Product
+                      </button>
+                    </td>
+                    <td>
+                      <Link
+                        href={{
+                          pathname: `/Dashboard/UpdateAccessories/${allAccessory._id}`,
+                          query:{msg:allAccessory._id}
+                        }}
+                      >
+                        <button className="btn btn-ghost text-red-500 text-lg">
+                          Update Product
                         </button>
-                      </td>
-                    <td><Link href={`/Dashboard/UpdateAccessories/${allAccessory._id}`}><button className="btn btn-ghost text-red-500 text-lg">
-                         Update Product
-                        </button></Link>
-                      </td>
+                      </Link>
+                    </td>
                   </tr>
                 ))}
               </tbody>
