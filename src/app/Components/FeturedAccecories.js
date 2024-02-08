@@ -35,7 +35,7 @@ const FeturedAccecories = () => {
           <li>
             <a href="#" className="group block">
               <img
-                src="https://petbangla.com/wp-content/uploads/2023/03/525_525_62fa40365bb67.jpg"
+                src="https://i.ibb.co/HNwvhZB/cat-fish-15-2.jpg"
                 alt=""
                 className="aspect-square w-full rounded object-cover"
               />
@@ -55,7 +55,7 @@ const FeturedAccecories = () => {
           <li>
             <a href="#" className="group block">
               <img
-                src="https://petbangla.com/wp-content/uploads/2023/01/cat-fish-15-2.jpg"
+                src="https://i.ibb.co/7zFDtnh/525-525-62fa40365bb67.jpg"
                 alt=""
                 className="aspect-square w-full rounded object-cover"
               />

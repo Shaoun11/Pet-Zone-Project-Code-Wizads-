@@ -4,8 +4,8 @@ import { FiSearch } from 'react-icons/fi';
 import { FaSearch } from "react-icons/fa";
 const PetBanner = () => {
     return (
-        <div id="slide1" className=" relative sm:w-full w-[410px] h-[500px] sm:h-[600px] ">
-        <img src='https://i.ibb.co/RHgq4v7/image-1.png' className="sm:w-full object-cover w-[410px] h-[500px] sm:h-[600px]  " />
+        <div id="slide1" className=" relative sm:w-full w-[410px] h-[500px] sm:h-[650px] ">
+        <img src='https://cdn.pixabay.com/photo/2018/10/01/09/21/pets-3715733_1280.jpg' className="sm:w-full object-cover w-[410px] h-[500px] sm:h-[650px]  " />
         <div className="absolute bg-gradient-to-r from-[#151519] to-rgba(21, 21, 21, 0.00) 100%)  flex h-full  top-0 left-0 items-center  ">
         <div className=' pl-16 lg:space-y-7 md:space-y-5  space-y-3 w-1/2'>
         <h2 className='lg:text-5xl md:text-4xl  text-white font-bold ' >Find Your best Pet</h2>

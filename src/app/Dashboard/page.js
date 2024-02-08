@@ -4,9 +4,20 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import HOCAuth from "@/utils/HOCAuth";
 import Link from "next/link";
+import { IoCompassOutline } from "react-icons/io5";
+import { MdLibraryAddCheck } from "react-icons/md";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
+import { MdContactPhone } from "react-icons/md";
+import { MdAddToPhotos } from "react-icons/md";
+import { IoBagAdd } from "react-icons/io5";
+import { MdGroupAdd } from "react-icons/md";
+import { MdBookmarkAdded } from "react-icons/md";
+import { MdAddTask } from "react-icons/md";
 import Navber from "../Components/Header";
-
-
+import { MdShoppingCartCheckout } from "react-icons/md";
+import { FaHome } from "react-icons/fa";
+import { MdContactSupport } from "react-icons/md";
+import { CgProfile } from "react-icons/cg";
 const MainDashboard = ({ children }) => {
    const{user}=useContext(AuthContext)
 
@@ -16,13 +27,12 @@ const MainDashboard = ({ children }) => {
     return (
     
   <>
-  <Navber></Navber>
  
-        
+       <Navber></Navber> 
   <div className="">
     <div className="drawer  lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content">
+      <div className="drawer-content bg-slate-200 rounded-s-3xl">
         {/* Page content here */}
 
       {children}
@@ -40,7 +50,7 @@ const MainDashboard = ({ children }) => {
           aria-label="close sidebar"
           className="drawer-overlay"
         ></label>
-        <ul className="menu p-4 w-80 min-h-full bg-indigo-200 text-gray-900">
+        <ul className="menu p-4 w-80 min-h-full bg-[#f7f7f7] rounded-e-3xl text-gray-900">
           {/* Sidebar content here */}
 
           {
@@ -48,27 +58,31 @@ const MainDashboard = ({ children }) => {
               <>
               <div className="  font-sans mb-6 pt-20 w-[200px] flex flex-row justify-center items-center">
   <div className="card w-96 mx-auto ">
-     <img className="w-32 h-32 mx-auto rounded-full -mt-20 border-8 border-white" src={user.photoURL} alt=""/>
-     <div className=" mt-2 ml-4 text-xl font-medium">{user.displayName}(Admin)</div>
+     <img className="w-32 h-32 mx-auto rounded-full -mt-20 border-8 border-white" src={user?.photoURL} alt=""/>
+     <div className=" mt-2 ml-4 text-xl font-medium">{user?.displayName}<span className="text-red-600">(Admin)</span></div>
 
     
      
   </div>
 </div>
+<hr className="mt-1 mb-2"></hr>
                 <li>
-                  <Link href={"/Dashboard/AdminProfile"}>Admin Profile</Link>
+                  <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/AdminProfile"}> <CgProfile></CgProfile>  Admin Profile</Link>
+                </li>
+                <li> 
+                  <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/Users"}> <MdGroupAdd></MdGroupAdd> All Users</Link>
                 </li>
                 <li>
-                  <Link href={"/Dashboard/users"}>All Users</Link>
+                  <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/AddPet"}><MdAddToPhotos></MdAddToPhotos> Add Pet</Link>
                 </li>
                 <li>
-                  <Link href={"/Dashboard/AddPet"}>Add Pet</Link>
+                  <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/AcceptPet"}><MdLibraryAddCheck></MdLibraryAddCheck> Accept Pet</Link>
                 </li>
                 <li>
-                  <Link href={"/Dashboard/AcceptPet"}>Accept Pet</Link>
+                  <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/AddAccessories"}><IoBagAdd></IoBagAdd> Add Accessories</Link>
                 </li>
                 <li>
-                  <Link href={"/Dashboard/AddAccessories"}>Add Accessories</Link>
+                  <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/ManageReview"}><IoCompassOutline></IoCompassOutline> Manage Review</Link>
                 </li>
               </>
               :
@@ -78,40 +92,41 @@ const MainDashboard = ({ children }) => {
 <div>
                         <div className=" font-sans pt-20  w-[200px] flex flex-row justify-center items-center">
   <div className="card w-96 mx-auto ">
-     <img className="w-32 h-32 mx-auto rounded-full -mt-20 border-8 border-white" src={user.photoURL} alt=""/>
-     <div className=" mt-2 ml-4 text-xl font-medium">{user.displayName}(User)</div>
+     <img className="w-32 h-32 mx-auto rounded-full -mt-20 border-8 border-white" src={user?.photoURL} alt=""/>
+     <div className=" mt-2 ml-4 text-xl font-medium">{user?.displayName}<span className="text-blue-600">(User)</span></div>
 
     
      
   </div>
 </div>
                         </div>
+                        <hr className="mt-3"></hr>
                 <li>
-                  <Link href={"/Dashboard/userProfile"}>User Profile</Link>
+                  <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/UserProfile"}> <CgProfile></CgProfile> User Profile</Link>
                 </li>
                 <li>
-                  <Link href={"/Dashboard/AddPet"}>Add Pet</Link>
+                  <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/AddPet"}> <MdAddToPhotos></MdAddToPhotos>  Add Pet</Link>
                 </li>
                 <li>
-                  <Link href={"/Dashboard/MyPet"}>My Added Pet</Link>
+                  <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/MyPet"}> <MdBookmarkAdded></MdBookmarkAdded>  My Added Pet</Link>
                 </li>
                 <li>
-                  <Link href={"/Dashboard/MyCart"}>My Cart</Link>
+                  <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/MyCart"}> <MdShoppingCartCheckout></MdShoppingCartCheckout>  My Cart</Link>
                 </li>
               </>
           }
 
           <br></br>
           <br></br>
-
+          <hr></hr>
           <li>
-            <Link href={"/"}>Home</Link>
+            <Link href={"/"}> <FaHome></FaHome>Home</Link>
           </li>
           <li>
-            <Link href={"/about"}>About</Link>
+            <Link href={"/about"}> <MdContactSupport></MdContactSupport> About</Link>
           </li>
           <li>
-            <Link href={"/contact"}>Contact</Link>
+            <Link href={"/contact"}> <MdContactPhone></MdContactPhone> Contact</Link>
           </li>
 
         </ul>
