@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosPublic = axios.create({
-    baseURL: "http://localhost:5001"
+    baseURL: "https://pet-zone-project-next-js.vercel.app"
 })
 
 const useAxiosPublic = () => {

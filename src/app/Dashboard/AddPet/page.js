@@ -3,7 +3,6 @@
 import React, { useContext } from 'react';
 import Dashboard from "../page";
 import { AuthContext } from '@/app/Provider/AuthProvider';
-import { ToastContainer, toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 
 const Page = () => {
@@ -31,7 +30,7 @@ const Page = () => {
     const newPet = { name, image, gender, age, adoption_fee, species, color, breed, available, description, owner_name, owner_image, owner_email };
     console.log(newPet);
 
-    fetch("http://localhost:5001/petdata", {
+    fetch("https://pet-zone-project-next-js.vercel.app/petdata", {
       method: "POST",
       headers: {
         "content-type": "application/json"

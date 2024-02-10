@@ -6,13 +6,12 @@ import HOCAuth from "@/utils/HOCAuth";
 import Link from "next/link";
 import { IoCompassOutline } from "react-icons/io5";
 import { MdLibraryAddCheck } from "react-icons/md";
-import { RiVerifiedBadgeFill } from "react-icons/ri";
+import { AiFillShop } from "react-icons/ai";
 import { MdContactPhone } from "react-icons/md";
 import { MdAddToPhotos } from "react-icons/md";
 import { IoBagAdd } from "react-icons/io5";
 import { MdGroupAdd } from "react-icons/md";
 import { MdBookmarkAdded } from "react-icons/md";
-import { MdAddTask } from "react-icons/md";
 import Navber from "../Components/Header";
 import { MdShoppingCartCheckout } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
@@ -84,6 +83,9 @@ const MainDashboard = ({ children }) => {
                 <li>
                   <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/ManageReview"}><IoCompassOutline></IoCompassOutline> Manage Review</Link>
                 </li>
+                <li>
+                  <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/AvailableAccessories"}><AiFillShop></AiFillShop> Available Accessories</Link>
+                </li>
               </>
               :
               
@@ -112,6 +114,9 @@ const MainDashboard = ({ children }) => {
                 </li>
                 <li>
                   <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/MyCart"}> <MdShoppingCartCheckout></MdShoppingCartCheckout>  My Cart</Link>
+                </li>
+                <li>
+                  <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/AddAccessories"}><IoBagAdd></IoBagAdd> Add Accessories</Link>
                 </li>
               </>
           }

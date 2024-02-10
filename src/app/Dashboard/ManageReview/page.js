@@ -6,11 +6,12 @@ import { MdStar } from "react-icons/md";
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-const page = () => {
+
+const Page = () => {
     const { data: review = [], refetch } = useQuery({
         queryKey: ['review'],
         queryFn: async () => {
-            const res = await axios.get('http://localhost:5001/reviews');
+            const res = await axios.get('https://pet-zone-project-next-js.vercel.app/reviews');
             return res.data;
         }
     })
@@ -28,7 +29,7 @@ const page = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.delete(`http://localhost:5001/reviews/${reviews._id}`)
+                axios.delete(`https://pet-zone-project-next-js.vercel.app/reviews/${reviews._id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch();
@@ -59,9 +60,9 @@ const page = () => {
             <div>
                 {review.map((reviews)=>
                 
-            <div className="px-8 ml-3 py-5 bg-white mb-3 rounded-2xl">
+            <div key={reviews._id} className="px-8 ml-3 py-5 bg-white mb-3 rounded-2xl">
               
-            <div className="p-2 lg:p-6">
+            <div key={reviews._id}  className="p-2 lg:p-6">
                  <div className="flex justify-between">
                      <div className="flex-1">
                          <p className="text-xl font-semibold mb-1">
@@ -84,7 +85,7 @@ const page = () => {
                      {reviews.details}
                  </p>
      
-                 <div className="md:flex justify-between items-center">
+                 <div key={reviews._id}  className="md:flex justify-between items-center">
                      <div className="md:flex gap-5 mb-2 md:mb-0">
                          <div className="w-14 h-14 rounded-full bg-slate-400 mb-2 md:mb-0">
                              <img src={reviews.userphoto} alt="" className="w-full h-full rounded-full object-cover" />
@@ -124,4 +125,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;

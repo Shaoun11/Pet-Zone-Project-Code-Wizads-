@@ -29,7 +29,7 @@ const PostReview = () => {
 
         console.log(reviewInfo);
 
-        axios.post('http://localhost:5001/reviews', reviewInfo)
+        axios.post('https://pet-zone-project-next-js.vercel.app/reviews', reviewInfo)
             .then(res => {
                 if (res.data.insertedId) {
                     reset();

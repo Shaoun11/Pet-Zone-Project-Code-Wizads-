@@ -13,7 +13,7 @@ export default async function petdetails({ params }) {
   );
   const data = await response.json();
 
-  const responsereview =await fetch(`http://localhost:5001/reviews`)
+  const responsereview =await fetch(`https://pet-zone-project-next-js.vercel.app/reviews`)
   const review =await responsereview.json();
   const {
     _id,

@@ -1,15 +1,15 @@
-"use client"
+
 import { MdStar } from "react-icons/md";
 
 const AddedReview = async() => {
-    const response =await fetch(`http://localhost:5001/reviews`)
+    const response =await fetch(`https://pet-zone-project-next-js.vercel.app/reviews`)
     const data =await response.json();
     return (
         <div>
 
             {
                 data.map((review)=>
-                <div className="p-2 lg:p-6">
+                <div key={review._id} className="p-2 lg:p-6">
                 <div className="md:flex justify-between items-center mb-6">
                     <div className="md:flex gap-6 mb-2 md:mb-0">
                         <div className="w-14 h-14 rounded-full bg-slate-400 mb-2 md:mb-0">
