@@ -27,7 +27,11 @@
     "react-marquee-slider": "^1.1.5",
     "react-query": "^3.39.3",
     "react-toastify": "^10.0.4",
+<<<<<<< HEAD
     "sweetalert2": "^11.10.4"
+=======
+    "sweetalert2": "^11.10.5"
+>>>>>>> 4294c0105e40936f0eda2d7e4c70f5b5ae2891a9
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

@@ -86,6 +86,9 @@ const MainDashboard = ({ children }) => {
                 <li>
                   <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/AvailableAccessories"}><AiFillShop></AiFillShop> Available Accessories</Link>
                 </li>
+                <li>
+                  <Link href={"/Dashboard/AvailableAccessories"}>Available Accessories</Link>
+                </li>
               </>
               :
               

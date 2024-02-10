@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import AllpetCard from "../Components/AllpetCard";
 import Navber from "../Components/Header";
 import Footer from "../Components/Footer";
+import { FaSearch } from "react-icons/fa";
 
 const AllPet = () => {
     const [searchQuery, setSearchQuery] = useState('');
