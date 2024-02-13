@@ -27,7 +27,8 @@
     "react-marquee-slider": "^1.1.5",
     "react-query": "^3.39.3",
     "react-toastify": "^10.0.4",
-    "sweetalert2": "^11.10.4"
+    "sweetalert2": "^11.10.4",
+    "swiper": "^11.0.6"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
