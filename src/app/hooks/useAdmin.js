@@ -15,7 +15,7 @@ const useAdmin = () => {
         enabled: !loader,
         queryFn: async () => {
             console.log('asking or checking is admin', user)
-            const res = await axios.get(`https://pet-zone-project-next-js.vercel.app/users/Admin/${user.email}`);
+            const res = await axios.get(`http://localhost:5001/users/Admin/${user.email}`);
             console.log(res.data);
             return res.data?.admin;
         }

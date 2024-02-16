@@ -11,7 +11,7 @@ const Page = () => {
     const { data: review = [], refetch } = useQuery({
         queryKey: ['review'],
         queryFn: async () => {
-            const res = await axios.get('https://pet-zone-project-next-js.vercel.app/reviews');
+            const res = await axios.get('http://localhost:5001/reviews');
             return res.data;
         }
     })
@@ -29,7 +29,7 @@ const Page = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.delete(`https://pet-zone-project-next-js.vercel.app/reviews/${reviews._id}`)
+                axios.delete(`http://localhost:5001/reviews/${reviews._id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch();

@@ -15,6 +15,22 @@ const CheckoutForm = () => {
     const { mycart, refetch } = useCart();
 
 
+<<<<<<< HEAD
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(
+                    'http://localhost:5001/petshop'
+                );
+                const data = await response.json();
+                setItems(data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+        fetchData();
+    }, []);
+=======
     // useEffect(() => {
     //     const fetchData = async () => {
     //         try {
@@ -29,6 +45,7 @@ const CheckoutForm = () => {
     //     };
     //     fetchData();
     // }, []);
+>>>>>>> ce972aa0f1f075fbc3a1202a771fd597584e44ae
 
     // const myCart = allCart.filter((cart) => cart.customerEmail === user.email);
     // console.log(mycart);
@@ -42,7 +59,7 @@ const CheckoutForm = () => {
         const createPaymentIntent = async () => {
             if (totalPrice > 0) {
                 try {
-                    const response = await fetch("https://pet-zone-project-next-js.vercel.app/create-payment-intent", {
+                    const response = await fetch("http://localhost:5001/create-payment-intent", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"

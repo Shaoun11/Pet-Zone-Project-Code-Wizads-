@@ -30,7 +30,7 @@ const Page = () => {
     const newPet = { name, image, gender, age, adoption_fee, species, color, breed, available, description, owner_name, owner_image, owner_email };
     console.log(newPet);
 
-    fetch("https://pet-zone-project-next-js.vercel.app/petdata", {
+    fetch("http://localhost:5001/petdata", {
       method: "POST",
       headers: {
         "content-type": "application/json"

@@ -14,7 +14,7 @@ const Page = () => {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    'https://pet-zone-project-next-js.vercel.app/petdata'
+                    'http://localhost:5001/petdata'
                 );
                 const data = await response.json();
                 setAllPets(data);
@@ -27,7 +27,7 @@ const Page = () => {
 
 
     const handleAccepted = pets => {
-        fetch(`https://pet-zone-project-next-js.vercel.app/petdata/${pets._id}`, {
+        fetch(`http://localhost:5001/petdata/${pets._id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"

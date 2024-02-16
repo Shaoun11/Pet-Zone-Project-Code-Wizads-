@@ -12,6 +12,15 @@ export default async function petdetails({ params }) {
   const { id } = params;
   console.log(id);
 
+<<<<<<< HEAD
+  const response = await fetch(
+    `http://localhost:5001/petdata/${id}`
+  );
+  const data = await response.json();
+
+  const responsereview =await fetch(`http://localhost:5001/reviews`)
+  const review =await responsereview.json();
+=======
   const { user } = useContext(AuthContext);
   const [quantity, setQuantity] = useState(1);
 
@@ -22,6 +31,7 @@ export default async function petdetails({ params }) {
   const responsereview = await fetch(`https://pet-zone-project-next-js.vercel.app/reviews`)
   const review = await responsereview.json();
 
+>>>>>>> ce972aa0f1f075fbc3a1202a771fd597584e44ae
   const {
     _id,
     name,
