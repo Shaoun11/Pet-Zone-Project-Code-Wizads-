@@ -43,7 +43,7 @@ const Login = () => {
                     name: result.user?.displayName,
                     photo: result.user?.photoURL,
                 }
-                fetch("https://pet-zone-project-next-js.vercel.app/users", {
+                fetch("http://localhost:5001/users", {
                     method: "POST",
                     headers: {
                         "content-type": "application/json"

@@ -14,7 +14,7 @@ const AllAccessories = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          'https://pet-zone-project-next-js.vercel.app/petshop'
+          'http://localhost:5001/petshop'
         );
         const data = await response.json();
         setAccessories(data);

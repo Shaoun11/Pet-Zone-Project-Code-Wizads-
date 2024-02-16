@@ -26,7 +26,7 @@ const Page = () => {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    'https://pet-zone-project-next-js.vercel.app/users'
+                    'http://localhost:5001/users'
                 );
                 const data = await response.json();
                 setAllUsers(data);
@@ -42,7 +42,7 @@ const Page = () => {
         const newRole = user.role === 'admin' ? 'user' : 'admin';
         console.log(newRole);
 
-        fetch(`https://pet-zone-project-next-js.vercel.app/users/admin/${user._id}`, {
+        fetch(`http://localhost:5001/users/admin/${user._id}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"

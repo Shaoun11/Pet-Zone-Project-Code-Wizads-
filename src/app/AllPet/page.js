@@ -13,7 +13,7 @@ const AllPet = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`https://pet-zone-project-next-js.vercel.app/products?page=0&size=${itemsPerPage}`);
+                const response = await fetch(`http://localhost:5001/products?page=0&size=${itemsPerPage}`);
                 const data = await response.json();
                 
                 setData(data)
@@ -33,13 +33,13 @@ const AllPet = () => {
 
 
     useEffect(() => {
-        fetch("https://pet-zone-project-next-js.vercel.app/productsCount")
+        fetch("http://localhost:5001/productsCount")
             .then(res => res.json())
             .then(data => setCount(data.count))
     }, [])
 
     useEffect(() => {
-        fetch(`https://pet-zone-project-next-js.vercel.app/products?page=${currentPage}&size=${itemsPerPage}`)
+        fetch(`http://localhost:5001/products?page=${currentPage}&size=${itemsPerPage}`)
             .then(res => res.json())
             .then(data => setData(data))
     }, [currentPage, itemsPerPage]);

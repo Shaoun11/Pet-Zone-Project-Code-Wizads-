@@ -2,7 +2,7 @@
 import { MdStar } from "react-icons/md";
 
 const AddedReview = async() => {
-    const response =await fetch(`https://pet-zone-project-next-js.vercel.app/reviews`)
+    const response =await fetch(`http://localhost:5001/reviews`)
     const data =await response.json();
     return (
         <div>

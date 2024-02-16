@@ -55,7 +55,7 @@ const Page = ({ params }) => {
     console.log(updatedProduct);
 
     // Sending updated assignment to the server
-    fetch(`https://pet-zone-project-next-js.vercel.app/petshop/${id}`, {
+    fetch(`http://localhost:5001/petshop/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -79,9 +79,9 @@ const Page = ({ params }) => {
   return (
     <Dashboard>
       <div>
-      <p className="text-2xl mt-5 ml-6 font-semibold mb-2">
+      {/* <p className="text-2xl mt-5 ml-6 font-semibold mb-2">
       Update Accessories
-                </p>
+                </p> */}
         <div>
           <div className="lg:flex   md:flex items-center justify-center">
             <div>

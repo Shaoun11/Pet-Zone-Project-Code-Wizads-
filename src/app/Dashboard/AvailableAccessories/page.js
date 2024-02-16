@@ -12,7 +12,7 @@ const Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://pet-zone-project-next-js.vercel.app/petshop");
+        const response = await fetch("http://localhost:5001/petshop");
         const data = await response.json();
         setAllAccessories(data);
       } catch (error) {
@@ -37,7 +37,7 @@ const Page = () => {
       if (result.isConfirmed) {
         console.log("delete confirmed");
 
-        fetch(`https://pet-zone-project-next-js.vercel.app/petshop/${_id}`, {
+        fetch(`http://localhost:5001/petshop/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -70,7 +70,7 @@ const Page = () => {
               {/* head */}
               <thead className="text-gray-700">
                 <tr>
-                  <th></th>
+                  <th>SI No.</th>
                   <th>Image</th>
                   <th>Name</th>
                   <th>Delete</th>

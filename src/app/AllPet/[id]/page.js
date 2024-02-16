@@ -9,11 +9,11 @@ export default async function petdetails({ params }) {
   console.log(id);
 
   const response = await fetch(
-    `https://pet-zone-project-next-js.vercel.app/petdata/${id}`
+    `http://localhost:5001/petdata/${id}`
   );
   const data = await response.json();
 
-  const responsereview =await fetch(`https://pet-zone-project-next-js.vercel.app/reviews`)
+  const responsereview =await fetch(`http://localhost:5001/reviews`)
   const review =await responsereview.json();
   const {
     _id,

@@ -18,7 +18,7 @@ const CheckoutForm = () => {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    'https://pet-zone-project-next-js.vercel.app/petshop'
+                    'http://localhost:5001/petshop'
                 );
                 const data = await response.json();
                 setItems(data);
@@ -38,7 +38,7 @@ const CheckoutForm = () => {
         const createPaymentIntent = async () => {
             if (totalPrice > 0) {
                 try {
-                    const response = await fetch("https://pet-zone-project-next-js.vercel.app/create-payment-intent", {
+                    const response = await fetch("http://localhost:5001/create-payment-intent", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"

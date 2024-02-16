@@ -6,7 +6,7 @@ import Dashboard from "../page";
 
 const page = async () => {
 
-    const response =await fetch(`https://pet-zone-project-next-js.vercel.app/petdata`)
+    const response =await fetch(`http://localhost:5001/petdata`)
     const data =await response.json();
     return (
        <Dashboard>
