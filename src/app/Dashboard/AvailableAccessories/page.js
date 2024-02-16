@@ -81,7 +81,7 @@ const Page = () => {
                 {allAccessories.map((allAccessory, index) => (
                   <tr key={allAccessory._id}>
                     <th>{index + 1}</th>
-                    <div className="avatar">
+                    <div key={allAccessory._id} className="avatar">
                       <div className="mask mask-squircle w-12 h-12">
                         <img
                           src={allAccessory.image}

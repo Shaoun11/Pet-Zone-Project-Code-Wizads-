@@ -51,7 +51,7 @@ const Page = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5001/mycart/${id}`)
+                axios.delete(`https://pet-zone-project-next-js.vercel.app/mycart/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch();

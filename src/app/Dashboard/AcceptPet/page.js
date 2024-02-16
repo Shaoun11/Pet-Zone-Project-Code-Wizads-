@@ -93,7 +93,7 @@ const Page = () => {
                                 {
                                     allPets.map((pets, index) => <tr key={pets._id}>
                                         <th>{index + 1}</th>
-                                        <div className="avatar">
+                                        <div  key={pets._id} className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">
                                                 <img src={pets.image} alt="Avatar Tailwind CSS Component" />
                                             </div>
