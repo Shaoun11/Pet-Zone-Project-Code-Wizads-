@@ -1,13 +1,18 @@
-"use client" 
+"use client"
 import AddedReview from "@/app/Components/AddedReview";
 import Footer from "@/app/Components/Footer";
 import Navber from "@/app/Components/Header";
 import PostReview from "@/app/Components/PostReview";
+import { AuthContext } from "@/app/Provider/AuthProvider";
+import axios from "axios";
+import { useContext, useState } from "react";
+import Swal from "sweetalert2";
 
 export default async function petdetails({ params }) {
   const { id } = params;
   console.log(id);
 
+<<<<<<< HEAD
   const response = await fetch(
     `http://localhost:5001/petdata/${id}`
   );
@@ -15,6 +20,18 @@ export default async function petdetails({ params }) {
 
   const responsereview =await fetch(`http://localhost:5001/reviews`)
   const review =await responsereview.json();
+=======
+  const { user } = useContext(AuthContext);
+  const [quantity, setQuantity] = useState(1);
+
+
+  const response = await fetch(`https://pet-zone-project-next-js.vercel.app/petdata/${id}`);
+  const data = await response.json();
+
+  const responsereview = await fetch(`https://pet-zone-project-next-js.vercel.app/reviews`)
+  const review = await responsereview.json();
+
+>>>>>>> ce972aa0f1f075fbc3a1202a771fd597584e44ae
   const {
     _id,
     name,
@@ -25,8 +42,46 @@ export default async function petdetails({ params }) {
     description,
     image,
     adoption_fee,
-    available,breed,
+    available, breed,
   } = data;
+
+
+  const handleAddToCart = () => {
+    if (user && user.email) {
+      const cartItem = { petId: _id, name, image, species, age, gender, color, description, price: adoption_fee, available, breed, quantity: quantity, customerEmail: user.email, customerName: user.displayName, customerPhoto: user.photoURL };
+
+      axios.post("http://localhost:5001/mycart", cartItem)
+        .then(res => {
+          console.log(res.data)
+          if (res.data.insertedId) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: `This item added to your cart`,
+              showConfirmButton: false,
+              timer: 1500
+            });
+            // refetch();
+          }
+        })
+    }
+    else {
+      Swal.fire({
+        title: "Please login",
+        text: "Login to add to the cart",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Login"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          window.location.href = "http://localhost:3000/login";
+        }
+      });
+    }
+  }
+
 
   return (
     <>
@@ -213,7 +268,7 @@ export default async function petdetails({ params }) {
                         <li className="mb-1">
                           {" "}
                           <b className="font-medium w-36 inline-block">
-                          Species:
+                            Species:
                           </b>
                           <span className="text-gray-500">{species}</span>
                         </li>
@@ -224,25 +279,25 @@ export default async function petdetails({ params }) {
                           </b>
                           <span className="text-gray-500">{gender}</span>
                         </li>
-                     
+
                         <li className="mb-1">
                           {" "}
                           <b className="font-medium w-36 inline-block">
-                           Age:
+                            Age:
                           </b>
                           <span className="text-gray-500">{age}</span>
                         </li>
                         <li className="mb-1">
                           {" "}
                           <b className="font-medium w-36 inline-block">
-                           Color:
+                            Color:
                           </b>
                           <span className="text-gray-500">{color}</span>
                         </li>
                         <li className="mb-1">
                           {" "}
                           <b className="font-medium w-36 inline-block">
-                          Breed:
+                            Breed:
                           </b>
                           <span className="text-gray-500">{breed}</span>
                         </li>
@@ -251,14 +306,24 @@ export default async function petdetails({ params }) {
                   </div>
                 </div>
 
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center">
                   <div>
                     <span className="title-font flex  font-medium text-2xl text-gray-900">
                       ${adoption_fee}
                     </span>
                   </div>
-                  <div className="flex">
-                    <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
+                  <div className="flex items-center">
+                    <div className="flex items-center justify-center w-1/2">
+                      <p className="text-lg font-medium mr-2">Quantity:</p>
+                      <input type="number" value={quantity}
+                        onChange={(e) => {
+                          // e.stopPropagation();
+                          setQuantity(parseInt(e.target.value))
+                        }}
+                        min={1} className="w-1/4 rounded-sm border border-[#e0e0e0] bg-white text-base font-medium text-[#6B7280] p-2" />
+                    </div>
+
+                    <button onClick={handleAddToCart} className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">
                       Add to Cart
                     </button>
 
@@ -284,31 +349,31 @@ export default async function petdetails({ params }) {
         </section>
 
         <div className="max-w-7xl mx-auto p-8  mt-8 rounded-2xl  shadow-xl bg-white mb-20">
-                    <p className="text-lg font-semibold mb-8">
-                    Reviews: {review.length}
-                    </p>
-                    <hr className="my-1" />
-                    <div>
+          <p className="text-lg font-semibold mb-8">
+            Reviews: {review.length}
+          </p>
+          <hr className="my-1" />
+          <div>
 
-                        <AddedReview />
-                        
-                    </div>
+            <AddedReview />
 
-                    <div>
-                        {/* Open the modal using document.getElementById('ID').showModal() method */}
-                        <button className="inline-flex items-center gap-x-2 border border-red-500 px-6 py-4 rounded-md bg-red-500 hover:border-none text-white font-semibold cursor-pointer" onClick={() => document.getElementById('my_modal_5').showModal()}>Add a review</button>
-                        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-                            <div className="modal-box bg-white">
-                                <PostReview />
-                                <div className="modal-action ">
-                                    <form className=" " method="dialog  ">
-                                        <button className="btn text-white">Close</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </dialog>
-                    </div>
+          </div>
+
+          <div>
+            {/* Open the modal using document.getElementById('ID').showModal() method */}
+            <button className="inline-flex items-center gap-x-2 border border-red-500 px-6 py-4 rounded-md bg-red-500 hover:border-none text-white font-semibold cursor-pointer" onClick={() => document.getElementById('my_modal_5').showModal()}>Add a review</button>
+            <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+              <div className="modal-box bg-white">
+                <PostReview />
+                <div className="modal-action ">
+                  <form className=" " method="dialog  ">
+                    <button className="btn text-white">Close</button>
+                  </form>
                 </div>
+              </div>
+            </dialog>
+          </div>
+        </div>
       </div>
       <Footer></Footer>
     </>
