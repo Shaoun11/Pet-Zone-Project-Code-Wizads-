@@ -19,7 +19,7 @@ const Page = ({ params }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:5001/petshop/${id}`);
+        const response = await fetch(`https://pet-zone-project-next-js.vercel.app/petshop/${id}`);
         const data = await response.json();
         setAccessories(data);
       } catch (error) {

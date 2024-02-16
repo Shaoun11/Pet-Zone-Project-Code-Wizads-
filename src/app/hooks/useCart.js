@@ -11,7 +11,7 @@ const useCart = () => {
         enabled: !loader,
         queryFn: async () => {
             console.log('Cart user', user)
-            const res = await axios.get(`http://localhost:5001/mycart`);
+            const res = await axios.get(`https://pet-zone-project-next-js.vercel.app/mycart`);
             const allCart = res.data;
             const myCart = allCart.filter((cart) => cart.customerEmail === user.email);
             console.log(myCart);

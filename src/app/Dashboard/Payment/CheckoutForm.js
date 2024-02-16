@@ -35,7 +35,7 @@ const CheckoutForm = () => {
     //     const fetchData = async () => {
     //         try {
     //             const response = await fetch(
-    //                 'http://localhost:5001/mycart'
+    //                 'https://pet-zone-project-next-js.vercel.app/mycart'
     //             );
     //             const data = await response.json();
     //             setAllCart(data);
@@ -143,7 +143,7 @@ const CheckoutForm = () => {
                     petItemIds: mycart.map(item => item.petId),
                     status: "pending",
                 }
-                const res = await axios.post("http://localhost:5001/payments", payment);
+                const res = await axios.post("https://pet-zone-project-next-js.vercel.app/payments", payment);
                 console.log("payment saved ", res.data);
                 refetch();
                 if (res.data?.paymentResult?.insertedId) {

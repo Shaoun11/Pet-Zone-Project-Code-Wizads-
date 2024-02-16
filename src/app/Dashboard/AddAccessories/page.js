@@ -34,7 +34,7 @@ const Page = () => {
         //   }
 
     //       // Sending product to the server
-    // fetch('http://localhost:5001/petshop',{
+    // fetch('https://pet-zone-project-next-js.vercel.app/petshop',{
     //     method: 'POST',
     //     headers: {
     //       'content-type': 'application/json'

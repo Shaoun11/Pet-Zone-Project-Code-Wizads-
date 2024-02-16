@@ -8,7 +8,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 
-export default async function petdetails({ params }) {
+export default async function Petdetails({ params }) {
   const { id } = params;
   console.log(id);
 
@@ -50,12 +50,12 @@ export default async function petdetails({ params }) {
     if (user && user.email) {
       const cartItem = { petId: _id, name, image, species, age, gender, color, description, price: adoption_fee, available, breed, quantity: quantity, customerEmail: user.email, customerName: user.displayName, customerPhoto: user.photoURL };
 
-      axios.post("http://localhost:5001/mycart", cartItem)
+      axios.post("https://pet-zone-project-next-js.vercel.app/mycart", cartItem)
         .then(res => {
           console.log(res.data)
           if (res.data.insertedId) {
             Swal.fire({
-              position: "top-end",
+              position: "top-right",
               icon: "success",
               title: `This item added to your cart`,
               showConfirmButton: false,

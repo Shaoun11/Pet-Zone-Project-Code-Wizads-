@@ -272,9 +272,7 @@ const MainDashboard = ({ children }) => {
                     <li>
                       <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/AvailableAccessories"}><AiFillShop></AiFillShop> Available Accessories</Link>
                     </li>
-                    <li>
-                      <Link href={"/Dashboard/AvailableAccessories"}>Available Accessories</Link>
-                    </li>
+                   
                   </>
                   :
 
@@ -306,6 +304,12 @@ const MainDashboard = ({ children }) => {
                     </li>
                     <li>
                       <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/AddAccessories"}><IoBagAdd></IoBagAdd> Add Accessories</Link>
+                    </li>
+                    <li>
+                      <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/AvailableAccessories"}><AiFillShop></AiFillShop> Available Accessories</Link>
+                    </li>
+                    <li>
+                      <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/MyCart"}> <MdShoppingCartCheckout></MdShoppingCartCheckout>  My Cart</Link>
                     </li>
                     <li>
                       <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/PaymentHistory"}><MdOutlinePayment /> Your Payment History</Link>
