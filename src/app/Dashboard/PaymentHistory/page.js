@@ -7,24 +7,24 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import { MdOutlinePendingActions } from 'react-icons/md';
 
-const page = () => {
+const Page = () => {
     const { user } = useContext(AuthContext);
     const [payments, setPayments] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get(`http://localhost:5001/payments`);
+                const res = await axios.get(`https://pet-zone-project-next-js.vercel.app/payments`);
                 console.log(res.data);
                 const allPayments = res.data;
-                const myPayments = allPayments.filter((pay) => pay.customerEmail === user.email);
+                const myPayments = allPayments.filter((pay) => pay?.customerEmail === user?.email);
                 setPayments(myPayments);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
         fetchData();
-    }, [user.email]);
+    }, [user?.email]);
 
     return (
         <Dashboard>
@@ -60,7 +60,7 @@ const page = () => {
                                                 payments.map((contest, index) => <tr key={contest._id}>
                                                     <th>{index + 1}</th>
                                                     <td className='text-lg font-semibold'>{contest.customerName}</td>
-                                                    <td>Dhaka</td>
+                                                    <td>{contest.address}</td> 
                                                     <td>{contest.date}</td>
                                                     <td>{contest.amount}</td>
                                                     <td>{contest.transactionId}</td>
@@ -79,4 +79,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Page;

@@ -29,14 +29,14 @@ export default async function Slider() {
                         spaceBetween: 40,
                     },
                     1024: {
-                        slidesPerView: 4,
+                        slidesPerView: 3,
                         spaceBetween: 50,
                     },
                 }}
                 modules={[Pagination]}
                 className="mySwiper"
             >
-                <div className='grid mt-16 mb-14 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto gap-6'>
+                <div className='grid mt-16 mb-14 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto gap-1'>
                     {
                         item.map(accessory => <SwiperSlide className='pb-10'>
                             <AccessoriesCard key={accessory._id} accessory={accessory}></AccessoriesCard>

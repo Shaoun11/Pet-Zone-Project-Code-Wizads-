@@ -11,7 +11,7 @@ const BestCard = ({petdata}) => {
     return (
       <>
         <div className="p-7">
-          <div className="bg-white rounded-lg overflow-hidden shadow-lg transition duration-1000 hover:shadow-primary-400  ring-4 ring-white ring-opacity-40 hover:ring-red-400 hover:ring-opacity-40 max-w-sm ">
+          <div className="bg-white rounded-lg overflow-hidden shadow-lg transition duration-1000 hover:shadow-primary-400  ring-4 ring-white ring-opacity-40 hover:ring-red-600 hover:ring-opacity-40 max-w-sm ">
             <div className="relative">
               <img
                 className=" w-96 h-60 object-cover"

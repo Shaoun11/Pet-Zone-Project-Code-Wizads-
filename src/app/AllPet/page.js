@@ -47,13 +47,16 @@ const AllPet = () => {
 
     const handlePrevPage = () => {
         if (currentPage > 0) {
+
             setCurrentPage(currentPage - 1);
+        window.scrollTo({ top: 400, behavior: 'smooth' })
         }
     }
 
     const handleNextPage = () => {
         if (currentPage < pages.length - 1) {
             setCurrentPage(currentPage + 1);
+            window.scrollTo({ top: 400, behavior: 'smooth' })
         }
     }
 
@@ -116,7 +119,7 @@ const AllPet = () => {
            <div className="text-center mt-20 mb-14">
                 <button className="text-lg bg-red-500 text-white mr-2 px-2 py-1 rounded" onClick={handlePrevPage}>Prev</button>
                 {
-                    pages.map(page => <button key={page} className={`text-xl font-semibold mr-2 py-1 px-2 rounded hover:text-red-500 ${currentPage === page ? "text-red-500" : ""}`} onClick={() => setCurrentPage(page)}>{page + 1}</button>)
+                    pages.map(page => <button key={page} className={`text-xl font-semibold mr-2 py-1 px-2 rounded hover:text-red-500 ${currentPage === page ? "text-red-500" : ""}`} onClick={() => {setCurrentPage(page); window.scrollTo({ top: 400, behavior: 'smooth' }); } }>{page + 1}</button>)
                 }
                 <button className="text-lg bg-red-500 text-white px-2 py-1 rounded" onClick={handleNextPage}>Next</button>
             </div>

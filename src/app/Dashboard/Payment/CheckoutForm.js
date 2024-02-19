@@ -15,25 +15,6 @@ const CheckoutForm = () => {
     const { mycart, refetch } = useCart();
 
 
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const response = await fetch(
-    //                 'http://localhost:5001/mycart'
-    //             );
-    //             const data = await response.json();
-    //             setAllCart(data);
-    //         } catch (error) {
-    //             console.error('Error fetching data:', error);
-    //         }
-    //     };
-    //     fetchData();
-    // }, []);
-
-    // const myCart = allCart.filter((cart) => cart.customerEmail === user.email);
-    // console.log(mycart);
-
-
     const totalPrice = mycart.reduce((total, item) => total + ((parseFloat(item.price)) * (item.quantity)), 0);
     console.log(totalPrice);
 
@@ -69,6 +50,7 @@ const CheckoutForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        const address = event.target.address.value;
 
         if (!stripe || !elements) {
             return;
@@ -113,12 +95,10 @@ const CheckoutForm = () => {
                 console.log("Transaction id: ", paymentIntent.id);
                 setTransactionId(paymentIntent.id);
 
-                // const address = e.target.address.value;
-
                 const payment = {
                     customerEmail: user.email,
                     customerName: user.displayName,
-                    // address: address,
+                    address: address,
                     amount: totalPrice,
                     transactionId: paymentIntent.id,
                     date: new Date(),
@@ -126,7 +106,7 @@ const CheckoutForm = () => {
                     petItemIds: mycart.map(item => item.petId),
                     status: "pending",
                 }
-                const res = await axios.post("http://localhost:5001/payments", payment);
+                const res = await axios.post("https://pet-zone-project-next-js.vercel.app/payments", payment);
                 console.log("payment saved ", res.data);
                 refetch();
                 if (res.data?.paymentResult?.insertedId) {
@@ -143,9 +123,10 @@ const CheckoutForm = () => {
     }
 
     return (
-        <div className='mt-20'>
+        <div className='mt-20 mx-auto'>
             <form onSubmit={handleSubmit}>
-                <CardElement className='border-2 border-red-200 py-5 px-3  mx-60'
+                <label for="card" className="mb-3 block text-base font-medium text-[#07074D] text-center">Enter your card number, CVC and ZIP code</label>
+                <CardElement className='border-2 border-red-200 py-5 px-3 md:w-1/2 mx-auto'
                     options={{
                         style: {
                             base: {
@@ -161,28 +142,25 @@ const CheckoutForm = () => {
                         },
                     }}
                 />
+
+                <div className='mt-8 text-center'>
+                    <label for="address" className="mb-3 block text-base font-medium text-[#07074D]">Enter your delivery address</label>
+                    <input type="text" name="address" id="address" placeholder="Delivery address" className="border-2 border-red-200 bg-transparent py-5 px-3 md:w-1/2" required />
+                </div>
+
                 <div className='text-center'>
                     <button className="btn bg-red-500 text-white px-10 my-7" type='submit' disabled={!stripe || !clientSecret}>
                         Pay
                     </button>
 
-                    {/* <button className="btn bg-red-500 text-white px-10 my-7" disabled={!stripe || !clientSecret} onClick={() => document.getElementById('my_modal_1').showModal()}>Pay</button>
-                    <dialog id="my_modal_1" className="modal">
-                        <div className="modal-box">
-                            <h3 className="font-bold text-lg">Please Enter your delivery address</h3>
-                            <div className="modal-action justify-center">
-                                <form method="dialog" className='w-full'>
-                                    <input type='text' name='address' className='w-full rounded-sm border border-[#e0e0e0] bg-white text-base font-medium text-[#6B7280] p-2 mb-3' /><br></br>
-                                    <button type="submit" className="btn bg-red-500 text-white text-lg px-10">Confirm</button>
-                                </form>
-                            </div>
-                        </div>
-                    </dialog> */}
-
                 </div>
                 <p className="text-red-600 text-center">{error}</p>
                 {
-                    transactionId && <p className="text-green-500 text-center">Your transaction id: {transactionId}</p>
+                    transactionId &&
+                    <>
+                        <p className="text-green-500 text-center">Your payment has been completed successfully</p>
+                        <p className="text-green-500 text-center">Your transaction id: {transactionId}</p>
+                    </>
                 }
             </form>
         </div>
