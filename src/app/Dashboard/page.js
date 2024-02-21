@@ -176,15 +176,7 @@ const MainDashboard = ({ children }) => {
                       <MdBookmarkAdded></MdBookmarkAdded> My Added Pet
                     </Link>
                   </li>
-                  <li>
-                    <Link
-                      className="font-semibold focus:text-red-500 active:text-red-500"
-                      href={"/Dashboard/MyCart"}
-                    >
-                      {" "}
-                      <MdShoppingCartCheckout></MdShoppingCartCheckout> My Cart
-                    </Link>
-                  </li>
+            
                   <li>
                     <Link
                       className="font-semibold focus:text-red-500 active:text-red-500"
@@ -202,6 +194,18 @@ const MainDashboard = ({ children }) => {
                       <IoBagAdd></IoBagAdd> Add Accessories
                     </Link>
                   </li>
+                  <li>
+                    <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/BookingRequests"}>
+                      <BsBook></BsBook>Your Booking Requests
+                    </Link>
+                  </li>
+                  <li>
+                      <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/MyCart"}> <MdShoppingCartCheckout></MdShoppingCartCheckout>  My Cart</Link>
+                    </li>
+                    <li>
+                      <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/PaymentHistory"}><MdOutlinePayment /> Your Payment History</Link>
+                    </li>
+
                 </>
               )}
 
