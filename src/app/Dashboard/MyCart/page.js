@@ -1,9 +1,7 @@
-"use client";
-
-import React, { useContext, useEffect, useState } from 'react';
+import React from "react";
 import Dashboard from "../page";
-import { FaEdit, FaTrashAlt } from 'react-icons/fa';
-import Link from 'next/link';
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import Link from "next/link";
 import { MdOutlinePayment } from "react-icons/md";
 import Swal from 'sweetalert2';
 import axios from 'axios';
@@ -25,7 +23,7 @@ const Page = () => {
     //     const fetchData = async () => {
     //         try {
     //             const response = await fetch(
-    //                 'http://localhost:5001/mycart'
+    //                 'https://pet-zone-project-next-js.vercel.app/mycart'
     //             );
     //             const data = await response.json();
     //             setAllCart(data);
@@ -67,9 +65,31 @@ const Page = () => {
     }
 
 
-    return (
-        <Dashboard>
-            <div>
+  return (
+    <Dashboard>
+      <div>
+        <div>
+          <h1 className="text-5xl font-semibold mt-5 text-center">
+            My <span className="text-red-500">Cart</span>
+          </h1>
+        </div>
+        <div className="text-right mr-20 mt-7 mb-14">
+          {data.length ? (
+            <Link href="/Dashboard/Payment">
+              <button className="btn border-none bg-red-500 text-white text-lg">
+                Payment
+              </button>
+            </Link>
+          ) : (
+            <button disabled className="btn bg-red-500 text-white">
+              {" "}
+              <p className="text-lg">
+                <MdOutlinePayment />
+              </p>{" "}
+              Pay
+            </button>
+          )}
+        </div>
 
                 <div>
                     <h1 className='text-5xl font-semibold mt-5 text-center'>My <span className='text-red-500'>Cart</span></h1>

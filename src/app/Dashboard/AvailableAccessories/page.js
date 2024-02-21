@@ -70,7 +70,7 @@ const Page = () => {
               {/* head */}
               <thead className="text-gray-700">
                 <tr>
-                  <th></th>
+                  <th>SI No.</th>
                   <th>Image</th>
                   <th>Name</th>
                   <th>Delete</th>

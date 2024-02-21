@@ -79,9 +79,9 @@ const Page = ({ params }) => {
   return (
     <Dashboard>
       <div>
-      <p className="text-2xl mt-5 ml-6 font-semibold mb-2">
+      {/* <p className="text-2xl mt-5 ml-6 font-semibold mb-2">
       Update Accessories
-                </p>
+                </p> */}
         <div>
           <div className="lg:flex   md:flex items-center justify-center">
             <div>
