@@ -8,7 +8,7 @@ import axios from "axios";
 
 
 
-const PostReview = () => {
+const PostReview = ({ name, _id }) => {
 
     const { user } = useContext(AuthContext);
 
@@ -20,8 +20,13 @@ const PostReview = () => {
     } = useForm();
 
     const onSubmit = (data) => {
+        const date = new Date();
+        const localDate = date.toLocaleString();
         const reviewInfo = {
+            petId: _id,
+            petName: name,
             details: data.details,
+            reviewTime: localDate,
             username: user?.displayName,
             useremail: user?.email,
             userphoto: user?.photoURL,
