@@ -125,6 +125,7 @@ const CheckoutForm = () => {
     return (
         <div className='mt-20 mx-auto'>
             <form onSubmit={handleSubmit}>
+                
                 <label for="card" className="mb-3 block text-base font-medium text-[#07074D] text-center">Enter your card number, CVC and ZIP code</label>
                 <CardElement className='border-2 border-red-200 py-5 px-3 md:w-1/2 mx-auto'
                     options={{
