@@ -36,6 +36,9 @@ export default async function Petdetails({ params }) {
   } = data;
 
 
+  const petReview = review.filter((r) => r.petId === _id);
+
+
   const handleAddToCart = () => {
     if (user && user.email) {
       const cartItem = { petId: _id, name, image, species, age, gender, color, description, price: adoption_fee, available, breed, quantity: quantity, customerEmail: user.email, customerName: user.displayName, customerPhoto: user.photoURL };
@@ -340,21 +343,28 @@ export default async function Petdetails({ params }) {
 
         <div className="max-w-7xl mx-auto p-8  mt-8 rounded-2xl  shadow-xl bg-white mb-20">
           <p className="text-lg font-semibold mb-8">
-            Reviews: {review.length}
+            Reviews: {petReview.length}
           </p>
           <hr className="my-1" />
-          <div>
-
-            <AddedReview />
-
-          </div>
+          {
+            petReview.length == 0 ?
+              <>
+                <p className="my-5 font-semibold text-xl">No Review Found</p>
+              </>
+              :
+              <>
+                <div>
+                  <AddedReview _id={_id} />
+                </div>
+              </>
+          }
 
           <div>
             {/* Open the modal using document.getElementById('ID').showModal() method */}
             <button className="inline-flex items-center gap-x-2 border border-red-500 px-6 py-4 rounded-md bg-red-500 hover:border-none text-white font-semibold cursor-pointer" onClick={() => document.getElementById('my_modal_5').showModal()}>Add a review</button>
             <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
               <div className="modal-box bg-white">
-                <PostReview />
+                <PostReview name={name} _id={_id} />
                 <div className="modal-action ">
                   <form className=" " method="dialog  ">
                     <button className="btn text-white">Close</button>
