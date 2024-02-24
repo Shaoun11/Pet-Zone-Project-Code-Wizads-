@@ -66,7 +66,7 @@ const AcceptPet = () => {
                 </div>
                 <div>
                     <div className="overflow-x-auto">
-                        <table className="table ">
+                        <table className="table text-center">
 
                             {/* head */}
                             <thead className='text-gray-700'>
@@ -75,6 +75,9 @@ const AcceptPet = () => {
                                     <th>Image</th>
                                     <th>Name</th>
                                     <th>Species</th>
+                                    <th>Gender</th>
+                                    <th>Breed</th>
+                                    <th>Age</th>
                                     <th>Price</th>
                                     <th>Accept</th>
                                 </tr>
@@ -83,14 +86,17 @@ const AcceptPet = () => {
                                 {
                                     allPets.map((pets, index) => <tr key={pets._id}>
                                         <th>{index + 1}</th>
-                                        <div key={pets._id} className="avatar">
-                                            <div className="mask mask-squircle w-12 h-12">
+                                        <div key={pets._id} className="avatar ">
+                                            <div className="mask mask-squircle w-[56px] h-[56px] mt-2   ">
                                                 <img src={pets.image} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
                                         <td className='font-normal' >{pets.name}</td>
-                                        <td className='font-medium'>{pets.species}</td>
-                                        <td className='font-normal'>{pets.adoption_fee}</td>
+                                        <td className='font-normal'>{pets.species}</td>
+                                        <td className='font-normal'>{pets.gender}</td>
+                                        <td className='font-normal'>{pets.breed}</td>
+                                        <td className='font-normal'>{pets.age}</td>
+                                        <td className='font-medium'>{pets.adoption_fee}</td>
                                         <td>
                                             {
                                                 pets.status === "accepted" ?
