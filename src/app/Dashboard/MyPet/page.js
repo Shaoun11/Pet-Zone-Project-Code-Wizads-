@@ -13,7 +13,6 @@ import { MdAddTask, MdNoteAdd, MdOutlinePendingActions } from 'react-icons/md';
 const MyAddedPet = () => {
 
     const { myAddedPet, refetch } = useAddedPet();
-    console.log(myAddedPet);
 
     // const handleDelete = id => {
     //     Swal.fire({
