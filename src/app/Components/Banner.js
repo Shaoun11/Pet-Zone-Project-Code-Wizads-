@@ -17,7 +17,7 @@ const Banner = () => {
           needs a home and providing it with a caring and loving environment.
         </p>
         <button className="bg-[#ef4444] text-white font-medium py-2 px-4 rounded transition-all hover:bg-indigo-600 active:scale-95">
-          Find a class
+          Get Started
         </button>
       </div>
       <ShuffleGrid />
