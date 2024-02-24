@@ -4,17 +4,13 @@ import Dashboard from "../page";
 import Swal from 'sweetalert2';
 import { MdAddTask, MdOutlinePendingActions } from "react-icons/md";
 
-
-
-const Page = () => {
-
+const AcceptPet = () => {
     const [allPets, setAllPets] = useState([]);
-
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    'https://pet-zone-project-next-js.vercel.app/petdata'
+                    'https://pet-zone-project-next-js.vercel.app/mypet'
                 );
                 const data = await response.json();
                 setAllPets(data);
@@ -26,53 +22,48 @@ const Page = () => {
     }, []);
 
 
-    const handleAccepted = pets => {
-        fetch(`https://pet-zone-project-next-js.vercel.app/petdata/${pets._id}`, {
-            method: "PATCH",
-            headers: {
-                "content-type": "application/json"
-            },
-            body: JSON.stringify(pets)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.modifiedCount > 0) {
+    // const handleAccepted = pets => {
+    //     fetch(`https://pet-zone-project-next-js.vercel.app/petdata/${pets._id}`, {
+    //         method: "PATCH",
+    //         headers: {
+    //             "content-type": "application/json"
+    //         },
+    //         body: JSON.stringify(pets)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log(data);
+    //             if (data.modifiedCount > 0) {
 
-                    setAllPets(prevPets =>
-                        prevPets.map(prevPet =>
-                            prevPet._id === pets._id ? { ...prevPet, status: 'accepted' } : prevPet
-                        )
-                    );
+    //                 setAllPets(prevPets =>
+    //                     prevPets.map(prevPet =>
+    //                         prevPet._id === pets._id ? { ...prevPet, status: 'accepted' } : prevPet
+    //                     )
+    //                 );
 
-                    Swal.fire({
-                        position: "center",
-                        icon: "success",
-                        title: 'You accept the pet',
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
+    //                 Swal.fire({
+    //                     position: "center",
+    //                     icon: "success",
+    //                     title: 'You accept the pet',
+    //                     showConfirmButton: false,
+    //                     timer: 1500
+    //                 });
 
-                }
-            })
-            .catch(error => {
-                console.error('Error during fetch:', error);
-            });
-    }
+    //             }
+    //         })
+    //         .catch(error => {
+    //             console.error('Error during fetch:', error);
+    //         });
+    // }
 
 
 
     return (
-
         <Dashboard>
-
-
             <div>
-
                 <div>
                     <h1 className='text-5xl font-semibold mt-5 mb-7 text-center'>Our  All  Pending Pet <span className='text-red-500'>Collection</span></h1>
                 </div>
-
                 <div>
                     <div className="overflow-x-auto">
                         <table className="table ">
@@ -88,18 +79,17 @@ const Page = () => {
                                     <th>Accept</th>
                                 </tr>
                             </thead>
-
                             <tbody>
                                 {
                                     allPets.map((pets, index) => <tr key={pets._id}>
                                         <th>{index + 1}</th>
-                                        <div  key={pets._id} className="avatar">
+                                        <div key={pets._id} className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">
                                                 <img src={pets.image} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
                                         <td className='font-normal' >{pets.name}</td>
-                                        <td  className='font-medium'>{pets.species}</td>
+                                        <td className='font-medium'>{pets.species}</td>
                                         <td className='font-normal'>{pets.adoption_fee}</td>
                                         <td>
                                             {
@@ -111,15 +101,13 @@ const Page = () => {
                                         </td>
                                     </tr>)
                                 }
-
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-
         </Dashboard>
     );
 };
 
-export default Page;
+export default AcceptPet;

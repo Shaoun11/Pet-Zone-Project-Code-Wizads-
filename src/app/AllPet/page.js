@@ -24,7 +24,6 @@ const AllPet = () => {
         fetchData();
     }, []);
 
-
     const itemsPerPage = 12;
     const [currentPage, setCurrentPage] = useState(0);
     const [count, setCount] = useState(0);
@@ -39,7 +38,7 @@ const AllPet = () => {
     }, [])
 
     useEffect(() => {
-        fetch(`https://pet-zone-project-next-js.vercel.app/products?page=${currentPage}&size=${itemsPerPage}`)
+        fetch(`https://pet-zone-project-next-js.vercel.app/products?page=${currentPage}&size=${itemsPerPage}`)        
             .then(res => res.json())
             .then(data => setData(data))
     }, [currentPage, itemsPerPage]);

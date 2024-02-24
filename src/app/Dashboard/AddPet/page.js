@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useContext } from 'react';
 import Dashboard from "../page";
 import { AuthContext } from '@/app/Provider/AuthProvider';
@@ -8,51 +7,51 @@ import Swal from 'sweetalert2';
 const Page = () => {
   const { user } = useContext(AuthContext);
 
-
   const handleAddPet = e => {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.name.value;
-    const image = form.image.value;
-    const gender = form.gender.value;
-    const age = form.age.value;
-    const adoption_fee = form.adoption_fee.value;
-    const species = form.species.value;
-    const color = form.color.value;
-    const breed = form.breed.value;
-    const available = form.available.value;
-    const description = form.description.value;
-    const owner_name = user.displayName;
-    const owner_image = user.photoURL;
-    const owner_email = user.email;
+    // e.preventDefault();
+    // const form = e.target;
+    // const name = form.name.value;
+    // const image = form.image.value;
+    // const gender = form.gender.value;
+    // const age = form.age.value;
+    // const adoption_fee = form.adoption_fee.value;
+    // const species = form.species.value;
+    // const color = form.color.value;
+    // const breed = form.breed.value;
+    // const available = form.available.value;
+    // const description = form.description.value;
+    // const owner_name = user.displayName;
+    // const owner_image = user.photoURL;
+    // const owner_email = user.email;
+    // const status = "pending";
 
 
-    const newPet = { name, image, gender, age, adoption_fee, species, color, breed, available, description, owner_name, owner_image, owner_email };
-    console.log(newPet);
+    // const newPet = { name, image, gender, age, adoption_fee, species, color, breed, available, description, owner_name, owner_image, owner_email, status };
+    // console.log(newPet);
 
-    fetch("https://pet-zone-project-next-js.vercel.app/petdata", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(newPet)
-    })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-        if (data.insertedId) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: 'Your pet is posted',
-            showConfirmButton: false,
-            timer: 1500
-          });
-        }
-      })
-
+    // fetch("https://pet-zone-project-next-js.vercel.app/mypet", {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/json"
+    //   },
+    //   body: JSON.stringify(newPet)
+    // })
+    //   .then(res => res.json())
+    //   .then(data => {
+    //     console.log(data);
+    //     if (data.insertedId) {
+    //       Swal.fire({
+    //         position: "top-end",
+    //         icon: "success",
+    //         title: 'Your pet is posted',
+    //         showConfirmButton: false,
+    //         timer: 1500
+    //       });
+    //     }
+    //   })
   }
 
+  
 
   return (
     <Dashboard>
