@@ -25,55 +25,55 @@ const UpdatePet = ({ params }) => {
     console.log(pet);
 
 
-    const handleUpdatePetDetails = (e) => {
-        e.preventDefault();
-        const form = e.target;
-        const name = form.name.value;
-        const image = form.image.value;
-        const gender = form.gender.value;
-        const age = form.age.value;
-        const adoption_fee = form.adoption_fee.value;
-        const species = form.species.value;
-        const color = form.color.value;
-        const breed = form.breed.value;
-        const available = form.available.value;
-        const description = form.description.value;
+    // const handleUpdatePetDetails = (e) => {
+    //     e.preventDefault();
+    //     const form = e.target;
+    //     const name = form.name.value;
+    //     const image = form.image.value;
+    //     const gender = form.gender.value;
+    //     const age = form.age.value;
+    //     const adoption_fee = form.adoption_fee.value;
+    //     const species = form.species.value;
+    //     const color = form.color.value;
+    //     const breed = form.breed.value;
+    //     const available = form.available.value;
+    //     const description = form.description.value;
     
-        const updatedProduct = {
-          name,
-          image,
-          gender,
-          age,
-          adoption_fee,
-          species,
-          color,
-          breed,
-          available,
-          description,
-        };
-        console.log(updatedProduct);
+    //     const updatedProduct = {
+    //       name,
+    //       image,
+    //       gender,
+    //       age,
+    //       adoption_fee,
+    //       species,
+    //       color,
+    //       breed,
+    //       available,
+    //       description,
+    //     };
+    //     console.log(updatedProduct);
     
-        // Sending updated details to the server
-        fetch(`https://pet-zone-project-next-js.vercel.app/myallpet/${id}`, {
-          method: "PUT",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(updatedProduct),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-            if (data.modifiedCount > 0) {
-              Swal.fire({
-                title: "Congratulations",
-                text: "Details Update Successful!",
-                icon: "success",
-                confirmButtonText: "Cool",
-              });
-            }
-          });
-      };
+    //     // Sending updated details to the server
+    //     fetch(`https://pet-zone-project-next-js.vercel.app/myallpet/${id}`, {
+    //       method: "PUT",
+    //       headers: {
+    //         "content-type": "application/json",
+    //       },
+    //       body: JSON.stringify(updatedProduct),
+    //     })
+    //       .then((res) => res.json())
+    //       .then((data) => {
+    //         console.log(data);
+    //         if (data.modifiedCount > 0) {
+    //           Swal.fire({
+    //             title: "Congratulations",
+    //             text: "Details Update Successful!",
+    //             icon: "success",
+    //             confirmButtonText: "Cool",
+    //           });
+    //         }
+    //       });
+    //   };
 
 
     return (
