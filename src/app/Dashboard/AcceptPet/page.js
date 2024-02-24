@@ -22,39 +22,39 @@ const AcceptPet = () => {
     }, []);
 
 
-    // const handleAccepted = pets => {
-    //     fetch(`https://pet-zone-project-next-js.vercel.app/petdata/${pets._id}`, {
-    //         method: "PATCH",
-    //         headers: {
-    //             "content-type": "application/json"
-    //         },
-    //         body: JSON.stringify(pets)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log(data);
-    //             if (data.modifiedCount > 0) {
+    const handleAccepted = pets => {
+        fetch(`https://pet-zone-project-next-js.vercel.app/petdata/${pets._id}`, {
+            method: "PATCH",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(pets)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount > 0) {
 
-    //                 setAllPets(prevPets =>
-    //                     prevPets.map(prevPet =>
-    //                         prevPet._id === pets._id ? { ...prevPet, status: 'accepted' } : prevPet
-    //                     )
-    //                 );
+                    setAllPets(prevPets =>
+                        prevPets.map(prevPet =>
+                            prevPet._id === pets._id ? { ...prevPet, status: 'accepted' } : prevPet
+                        )
+                    );
 
-    //                 Swal.fire({
-    //                     position: "center",
-    //                     icon: "success",
-    //                     title: 'You accept the pet',
-    //                     showConfirmButton: false,
-    //                     timer: 1500
-    //                 });
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: 'You accept the pet',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
 
-    //             }
-    //         })
-    //         .catch(error => {
-    //             console.error('Error during fetch:', error);
-    //         });
-    // }
+                }
+            })
+            .catch(error => {
+                console.error('Error during fetch:', error);
+            });
+    }
 
 
 
