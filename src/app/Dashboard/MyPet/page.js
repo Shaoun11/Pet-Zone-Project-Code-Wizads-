@@ -89,7 +89,7 @@ const MyAddedPet = () => {
                                     }
                                     <td>
                                         <button
-                                            // onClick={() => handleDelete(item._id)}
+                                            onClick={() => handleDelete(item._id)}
                                             className="btn btn-ghost text-lg">
                                             <FaTrashAlt className="text-red-500 text-xl"></FaTrashAlt>
                                         </button>
