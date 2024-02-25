@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useContext } from 'react';
 import Dashboard from "../page";
 import { AuthContext } from '@/app/Provider/AuthProvider';
@@ -7,7 +6,6 @@ import Swal from 'sweetalert2';
 
 const Page = () => {
   const { user } = useContext(AuthContext);
-
 
   const handleAddPet = e => {
     e.preventDefault();
@@ -25,12 +23,13 @@ const Page = () => {
     const owner_name = user.displayName;
     const owner_image = user.photoURL;
     const owner_email = user.email;
+    const status = "pending";
 
 
-    const newPet = { name, image, gender, age, adoption_fee, species, color, breed, available, description, owner_name, owner_image, owner_email };
+    const newPet = { name, image, gender, age, adoption_fee, species, color, breed, available, description, owner_name, owner_image, owner_email, status };
     console.log(newPet);
 
-    fetch("https://pet-zone-project-next-js.vercel.app/petdata", {
+    fetch("https://pet-zone-project-next-js.vercel.app/mypet", {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -50,9 +49,9 @@ const Page = () => {
           });
         }
       })
-
   }
 
+  
 
   return (
     <Dashboard>

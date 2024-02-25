@@ -4,17 +4,13 @@ import Dashboard from "../page";
 import Swal from 'sweetalert2';
 import { MdAddTask, MdOutlinePendingActions } from "react-icons/md";
 
-
-
-const Page = () => {
-
+const AcceptPet = () => {
     const [allPets, setAllPets] = useState([]);
-
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    'https://pet-zone-project-next-js.vercel.app/petdata'
+                    'https://pet-zone-project-next-js.vercel.app/mypet'
                 );
                 const data = await response.json();
                 setAllPets(data);
@@ -63,19 +59,14 @@ const Page = () => {
 
 
     return (
-
         <Dashboard>
-
-
             <div>
-
                 <div>
                     <h1 className='text-5xl font-semibold mt-5 mb-7 text-center'>Our  All  Pending Pet <span className='text-red-500'>Collection</span></h1>
                 </div>
-
                 <div>
                     <div className="overflow-x-auto">
-                        <table className="table ">
+                        <table className="table text-center">
 
                             {/* head */}
                             <thead className='text-gray-700'>
@@ -84,23 +75,28 @@ const Page = () => {
                                     <th>Image</th>
                                     <th>Name</th>
                                     <th>Species</th>
+                                    <th>Gender</th>
+                                    <th>Breed</th>
+                                    <th>Age</th>
                                     <th>Price</th>
                                     <th>Accept</th>
                                 </tr>
                             </thead>
-
                             <tbody>
                                 {
                                     allPets.map((pets, index) => <tr key={pets._id}>
                                         <th>{index + 1}</th>
-                                        <div  key={pets._id} className="avatar">
-                                            <div className="mask mask-squircle w-12 h-12">
+                                        <div key={pets._id} className="avatar ">
+                                            <div className="mask mask-squircle w-[56px] h-[56px] mt-2   ">
                                                 <img src={pets.image} alt="Avatar Tailwind CSS Component" />
                                             </div>
                                         </div>
                                         <td className='font-normal' >{pets.name}</td>
-                                        <td  className='font-medium'>{pets.species}</td>
-                                        <td className='font-normal'>{pets.adoption_fee}</td>
+                                        <td className='font-normal'>{pets.species}</td>
+                                        <td className='font-normal'>{pets.gender}</td>
+                                        <td className='font-normal'>{pets.breed}</td>
+                                        <td className='font-normal'>{pets.age}</td>
+                                        <td className='font-medium'>{pets.adoption_fee}</td>
                                         <td>
                                             {
                                                 pets.status === "accepted" ?
@@ -111,15 +107,13 @@ const Page = () => {
                                         </td>
                                     </tr>)
                                 }
-
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-
         </Dashboard>
     );
 };
 
-export default Page;
+export default AcceptPet;
