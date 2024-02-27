@@ -264,7 +264,7 @@ const MainDashboard = ({ children }) => {
                       </Link>
                     </li>
                     <li>
-                      <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/BookingRequests"}>
+                      <Link className="font-semibold focus:text-red-500 active:text-red-500" href={"/Dashboard/SellerRequest"}>
                         <BsBook></BsBook> Seller Requests
                       </Link>
                     </li>
