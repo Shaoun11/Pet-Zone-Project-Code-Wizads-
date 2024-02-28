@@ -66,7 +66,6 @@ const Page = () => {
                             prevUser._id === user._id ? { ...prevUser, role: newRole } : prevUser
                         )
                     );
-
                 }
             })
             .catch(error => {

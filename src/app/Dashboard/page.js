@@ -24,9 +24,7 @@ const MainDashboard = ({ children }) => {
 
   // TODO: get isAdmin value from the database
   const [isAdmin] = useAdmin();
-  // const isSeller = false;
   const [isSeller] = useSeller()
-  console.log(isSeller);
   return (
     <>
       <Navber></Navber>

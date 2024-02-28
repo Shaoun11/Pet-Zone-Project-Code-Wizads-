@@ -7,6 +7,9 @@ import Link from "next/link";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import { useQuery } from "@tanstack/react-query";
 import useCart from "../hooks/useCart";
+import Swal from "sweetalert2";
+import useAdmin from "../hooks/useAdmin";
+import useSeller from "../hooks/useSeller";
 
 const Navbar = () => {
   const axiosPublic = useAxiosPublic();
@@ -14,6 +17,10 @@ const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(!false);
   const [isOpenMenu, setOpenMenu] = useState(false);
   const [profile, setProfile] = useState(false);
+  const [isAdmin] = useAdmin();
+  const [isSeller] = useSeller()
+
+
   const handleProfile = () => {
     setProfile(!profile);
   };
@@ -30,6 +37,43 @@ const Navbar = () => {
       return res.data;
     },
   });
+
+  const handleSeller = () => {
+    const email = user?.email;
+    const name = user?.displayName;
+    const image = user?.photoURL;
+    const role = "user"
+
+    const newSeller = { name, email, image, role };
+
+    // fetch("https://pet-zone-project-next-js.vercel.app/mypet", {
+    fetch("http://localhost:5001/seller", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(newSeller)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: 'You are requested to a seller',
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      })
+  }
+
+
+
+
+
+
 
   return (
     <div className="shadow sticky -top-2 z-20 bg-opacity-30 h-[101px]  bg-[#f0f8ff] static:text-white ">
@@ -116,9 +160,8 @@ const Navbar = () => {
               )}
 
               <ul
-                className={`absolute w-full h-[470px] top-full right-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 bg-[#ebe8fc] p-8 z-50 flex flex-col items-center pt-36 gap-y-4 text-2xl font-medium lg:hidden ${
-                  toggleMenu ? "hidden" : ""
-                }`}
+                className={`absolute w-full h-[470px] top-full right-2/4 left-2/4 -translate-x-2/4 -translate-y-2/4 bg-[#ebe8fc] p-8 z-50 flex flex-col items-center pt-36 gap-y-4 text-2xl font-medium lg:hidden ${toggleMenu ? "hidden" : ""
+                  }`}
               >
                 <li>
                   <Link
@@ -182,7 +225,7 @@ const Navbar = () => {
                       <div className="t-0 absolute left-3">
                         <p
                           className="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-3 text-xs text-white"
-                          
+
                         >
                           {mycart.length}
                         </p>
@@ -225,8 +268,8 @@ const Navbar = () => {
                       isPending
                         ? "text-black"
                         : isActive
-                        ? "bg-[#7a63f1] text-[#f5f4fa] py-2 px-4 rounded"
-                        : "py-2 px-4 bg-[#7a63f1] text-[#f5f4fa] cursor-pointer rounded text-lg font-medium"
+                          ? "bg-[#7a63f1] text-[#f5f4fa] py-2 px-4 rounded"
+                          : "py-2 px-4 bg-[#7a63f1] text-[#f5f4fa] cursor-pointer rounded text-lg font-medium"
                     }
                   >
                     Login
@@ -238,11 +281,10 @@ const Navbar = () => {
             {/* user profile */}
             <div className="flex">
               <div
-                className={`w-[280px] z-10 h-fit absolute  rounded-md shadow-md mr-32 mt-9 bg-opacity-50  backdrop-blur-md  hover:shadow-2xl bg-[#eae4e4] py-8 px-5 ${
-                  profile
-                    ? "-top-0 left-20 md:left-auto md:top-12 md:right-7 "
-                    : "hidden"
-                } `}
+                className={`w-[280px] z-10 h-fit absolute  rounded-md shadow-md mr-32 mt-9 bg-opacity-50  backdrop-blur-md  hover:shadow-2xl bg-[#eae4e4] py-8 px-5 ${profile
+                  ? "-top-0 left-20 md:left-auto md:top-12 md:right-7 "
+                  : "hidden"
+                  } `}
               >
                 <div className="w-[120px] h-[120px] mx-auto rounded-full border-2 border-red-500 overflow-hidden">
                   <img
@@ -276,6 +318,14 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
+            </div>
+
+            <div>
+              {user && !isAdmin && !isSeller &&
+                <button onClick={() => handleSeller()} className='lg:mt-4 md:my-3 mr-10 btn btn-sm btn-outline cursor-pointer items-center justify-center rounded-md border py-2 px-4 text-center text-gray-500 transition duration-150 ease-in-out hover:translate-y-1 hover:bg-[#ef4444] hover:text-white'>
+                  Seller Request
+                </button>
+                }
             </div>
           </div>
         </nav>
