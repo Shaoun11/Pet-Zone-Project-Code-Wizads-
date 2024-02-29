@@ -1,11 +1,21 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
+import { TiDelete } from "react-icons/ti";
+import { FcLike } from "react-icons/fc";
+import { FcLikePlaceholder } from "react-icons/fc";
+import Swal from "sweetalert2";
+import axios from "axios";
+import useLike from "../hooks/useLike";
 
 
 const HelpDeskPost = () => {
 
   const [allPost, setAllPost] = useState([]);
+  const { user } = useContext(AuthContext);
+  const { myuser } = useLike();
+  console.log(myuser);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,17 +34,83 @@ const HelpDeskPost = () => {
   const formatDate = (postTime) => {
     const postDate = new Date(postTime);
     const currentDate = new Date();
-    const diffInMilliseconds = currentDate - postDate;
-    const diffInDays = Math.floor(diffInMilliseconds / (1000 * 60 * 60 * 24));
+    const timeDifference = currentDate - postDate;
+    const oneDay = 24 * 60 * 60 * 1000;
 
-    if (diffInDays === 0) {
+    if (timeDifference < oneDay && postDate.getDate() === currentDate.getDate()) {
       return postDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    } else if (diffInDays === 1) {
+    }
+    else if (timeDifference < (2 * oneDay) && postDate.getDate() === currentDate.getDate() - 1) {
       return 'Yesterday';
-    } else {
+    }
+    else {
       return postDate.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
     }
   };
+
+
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure you want to delete your post?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:5001/helpdesk/${id}`)
+          .then((res) => {
+            if (res.data.deletedCount > 0) {
+              setAllPost(allPost.filter(post => post._id !== id));
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your post has been deleted",
+                icon: "success",
+              });
+            }
+          });
+      }
+    });
+  };
+
+
+  const handleLike = async (id, userId) => {
+    try {
+      const res = await axios.put(`http://localhost:5001/helpdesk/like/${id}`, { userId })
+      console.log("Liked", res.data);
+
+      const postIndex = allPost.findIndex(post => post._id === id);
+      const updatedPosts = [...allPost];
+      updatedPosts[postIndex] = {
+        ...updatedPosts[postIndex],
+        like: [...updatedPosts[postIndex].like, userId]
+      };
+      setAllPost(updatedPosts);
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+
+  const handleUnLike = async (id, userId) => {
+    try {
+      const res = await axios.put(`http://localhost:5001/helpdesk/unlike/${id}`, { userId })
+      console.log("unLiked", res.data);
+
+      const postIndex = allPost.findIndex(post => post._id === id);
+      const updatedPosts = [...allPost];
+      updatedPosts[postIndex] = {
+        ...updatedPosts[postIndex],
+        like: updatedPosts[postIndex].like.filter(id => id !== userId)
+      };
+      setAllPost(updatedPosts);
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
 
 
 
@@ -54,18 +130,29 @@ const HelpDeskPost = () => {
                 <p className="text-gray-600 text-sm flex">{formatDate(helpdesk.postTime)}</p>
               </div>
             </div>
-            <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-red-500 ml-4 mr-3">
-              <svg
-                fill="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                className="w-5 h-5"
-                viewBox="0 0 24 24"
-              >
-                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-              </svg>
-            </button>
+
+            {
+              helpdesk.userEmail === user?.email ?
+                <>
+                  <button onClick={() => handleDelete(helpdesk._id)} className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-red-500 ml-4 mr-3">
+                    <TiDelete className="text-3xl" />
+                  </button>
+                </>
+                :
+                <>
+                  {
+                    helpdesk.like?.includes(myuser._id) ?
+                      <button onClick={() => handleUnLike(helpdesk._id, myuser._id)} className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center ml-4 mr-3">
+                        <FcLike className="text-xl" />
+                      </button>
+                      :
+                      <button onClick={() => handleLike(helpdesk._id, myuser._id)} className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center ml-4 mr-3">
+                        <FcLikePlaceholder className="text-xl" />
+                      </button>
+                  }
+                </>
+            }
+
           </div>
           <p className="text-lg pl-5 pr-5 leading-tight mb-4">
             {helpdesk?.postWriting}
@@ -100,7 +187,16 @@ const HelpDeskPost = () => {
                 <span className="ml-1 text-sm text-gray-600">Comment</span>
               </button>
             </div>
-            <span className="text-sm text-gray-600">12 likes | 5 comments</span>
+            <div className="text-sm text-gray-600">
+              {
+                helpdesk && helpdesk.like ?
+                  <span>{helpdesk.like.length} {helpdesk.like.length <= 1 ? "Like " : "Likes "}</span>
+                  :
+                  <span> 0 Like </span>
+              }
+              |
+              5 comments
+            </div>
           </div>
         </div>)
       }
