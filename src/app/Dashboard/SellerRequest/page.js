@@ -15,7 +15,7 @@ const SellerRequest = () => {
         const fetchData = async () => {
             try {
                 const response = await fetch(
-                    'http://localhost:5001/seller'
+                    'https://pet-zone-project-next-js.vercel.app/seller'
                 );
                 const data = await response.json();
                 setAllSellers(data);
@@ -32,7 +32,7 @@ const SellerRequest = () => {
         console.log(newRole);
         console.log(user.email);
 
-        fetch(`http://localhost:5001/users/seller/${user.email}`, {
+        fetch(`https://pet-zone-project-next-js.vercel.app/users/seller/${user.email}`, {
             method: "PATCH",
             headers: {
                 "content-type": "application/json"
@@ -76,7 +76,7 @@ const SellerRequest = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:5001/users/seller/${id}`)
+                axios.delete(`https://pet-zone-project-next-js.vercel.app/users/seller/${id}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             refetch();
@@ -94,7 +94,7 @@ const SellerRequest = () => {
 
     return (
         <Dashboard>
-            <div>
+            <div className='lg:ml-72'>
                 <div>
                     <h1 className='text-5xl font-semibold mt-5 mb-4 text-center'>Seller <span className='text-red-500'>Requests</span></h1>
                 </div>

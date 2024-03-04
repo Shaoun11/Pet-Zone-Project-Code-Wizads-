@@ -3,6 +3,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { TiDelete } from "react-icons/ti";
+import { FaComment } from "react-icons/fa";
 import { FcLike } from "react-icons/fc";
 import { FcLikePlaceholder } from "react-icons/fc";
 import Swal from "sweetalert2";
@@ -20,7 +21,7 @@ const HelpDeskPost = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:5001/helpdesk');
+        const response = await fetch('https://pet-zone-project-next-js.vercel.app/helpdesk');
         const data = await response.json();
         setAllPost(data);
       } catch (error) {
@@ -60,7 +61,7 @@ const HelpDeskPost = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5001/helpdesk/${id}`)
+        axios.delete(`https://pet-zone-project-next-js.vercel.app/helpdesk/${id}`)
           .then((res) => {
             if (res.data.deletedCount > 0) {
               setAllPost(allPost.filter(post => post._id !== id));
@@ -78,7 +79,7 @@ const HelpDeskPost = () => {
 
   const handleLike = async (id, userId) => {
     try {
-      const res = await axios.put(`http://localhost:5001/helpdesk/like/${id}`, { userId })
+      const res = await axios.put(`https://pet-zone-project-next-js.vercel.app/helpdesk/like/${id}`, { userId })
       console.log("Liked", res.data);
 
       const postIndex = allPost.findIndex(post => post._id === id);
@@ -96,7 +97,7 @@ const HelpDeskPost = () => {
 
   const handleUnLike = async (id, userId) => {
     try {
-      const res = await axios.put(`http://localhost:5001/helpdesk/unlike/${id}`, { userId })
+      const res = await axios.put(`https://pet-zone-project-next-js.vercel.app/helpdesk/unlike/${id}`, { userId })
       console.log("unLiked", res.data);
 
       const postIndex = allPost.findIndex(post => post._id === id);
@@ -154,45 +155,28 @@ const HelpDeskPost = () => {
             }
 
           </div>
-          <p className="text-lg pl-5 pr-5 leading-tight mb-4">
+          <p className="text-base pl-5 pr-5  leading-tight mb-4">
             {helpdesk?.postWriting}
           </p>
           <img
             src={helpdesk?.postImage}
             alt="Posted Image"
-            className="w-full pl-5 object-cover pr-3  mb-4"
+            className="w-full h-[510px] pl-5 object-cover pr-3  mb-4"
           />
           <div className="flex items-center pl-3 pb-3 pr-3 justify-between">
             <div className="flex items-center space-x-4">
               <button className="flex items-center focus:outline-none"></button>
               <button className="flex items-center focus:outline-none">
-                <svg
-                  className="w-5 h-5 text-gray-500 hover:text-blue-500"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M15 21l-7-7-7 7"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                  ></path>
-                </svg>
+               <FaComment className="text-red-500"></FaComment>
                 <span className="ml-1 text-sm text-gray-600">Comment</span>
               </button>
             </div>
-            <div className="text-sm text-gray-600">
+            <div className="text-sm text-gray-600 flex">
               {
                 helpdesk && helpdesk.like ?
-                  <span>{helpdesk.like.length} {helpdesk.like.length <= 1 ? "Like " : "Likes "}</span>
+                  <span className="flex">{helpdesk.like.length} {helpdesk.like.length <= 1 ? <FcLike className="mt-[2px]"></FcLike> : <FcLike className="mt-[2px]"></FcLike>}</span>
                   :
-                  <span> 0 Like </span>
+                 <><span> 0 </span>  </> 
               }
               |
               5 comments

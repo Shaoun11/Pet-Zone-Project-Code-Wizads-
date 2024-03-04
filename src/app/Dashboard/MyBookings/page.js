@@ -34,7 +34,7 @@ const Page = () => {
 
   return (
     <Dashboard>
-      <div>
+      <div className="lg:ml-72">
         <div>
           <h1 className="text-5xl font-semibold mt-5 mb-4 text-center">
             My <span className="text-red-500">Bookings</span>

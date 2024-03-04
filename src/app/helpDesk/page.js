@@ -42,7 +42,7 @@ const HelpDesk = () => {
 
     console.log(helpPost);
 
-    axios.post('http://localhost:5001/helpdesk', helpPost)
+    axios.post('https://pet-zone-project-next-js.vercel.app/helpdesk', helpPost)
       .then(res => {
         if (res.data.insertedId) {
           Swal.fire({
@@ -68,10 +68,10 @@ const HelpDesk = () => {
         <div className="grid grid-cols-1  gap-4 lg:grid-cols-3 md:grid-cols-2 lg:gap-8">
           <div className="post p-5 lg:p-1 rounded-md">
             <div className="lg:fixed lg:left-14 lg:w-3/12 md:fixed md:w-5/12">
-              {/* <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full mb-4">
+              <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full mb-4">
                 <div className="relative">
                   <img
-                    src="https://placekitten.com/500/150"
+                    src="https://hivelife.com/wp-content/uploads/2021/04/Untitled-design-2.jpg"
                     alt="Banner Profile"
                     className="w-full rounded-t-lg"
                   />
@@ -121,7 +121,7 @@ const HelpDesk = () => {
                     LinkedIn{" "}
                   </a>
                 </div>
-              </div> */}
+              </div>
 
 
               <div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full">

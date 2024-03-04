@@ -28,7 +28,7 @@ const Page = () => {
 
     return (
         <Dashboard>
-            <div>
+            <div className='lg:ml-72'>
                 <div>
                     <h1 className='text-5xl font-semibold mt-5 mb-10 text-center'>Your <span className='text-red-500'>Payment </span>History</h1>
                 </div>
@@ -52,7 +52,7 @@ const Page = () => {
                                                 <th>Date</th>
                                                 <th>Total Amount</th>
                                                 <th>Transaction Id</th>
-                                                <th>Status</th>
+                                              
                                             </tr>
                                         </thead>
                                         <tbody className=''>
@@ -64,7 +64,7 @@ const Page = () => {
                                                     <td>{contest.date}</td>
                                                     <td>{contest.amount}</td>
                                                     <td>{contest.transactionId}</td>
-                                                    <td className='text-red-500 text-lg font-semibold'>Pending</td>
+                                                  
                                                 </tr>)
                                             }
 

@@ -10,7 +10,7 @@ const Page = () => {
     return (
     
       <Dashboard>
-          <div >
+          <div className='lg:ml-72' >
     
 
       <div

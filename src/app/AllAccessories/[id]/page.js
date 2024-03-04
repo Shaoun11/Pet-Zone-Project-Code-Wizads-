@@ -214,12 +214,12 @@ export default async function PetAccessoriesDetails({ params }) {
 
                   <div className="flex  gap-24">
                     <div className="flex">
-                      <button className="mt-5 bg-[#ef4444] text-white py-1 px-4 rounded transition-all hover:bg-indigo-600 active:scale-95">
+                      <button className="mt-5 bg-[#ef4444] text-white py-1 px-4 rounded transition-all hover:bg-yellow-500 active:scale-95">
                         Buy Now
                       </button>
                     </div>
                     <div className="flex">
-                      <button onClick={handleAddToCart} className="mt-5 bg-[#ef4444] text-white font-medium -py-1 px-4 rounded transition-all hover:bg-indigo-600 active:scale-95">
+                      <button onClick={handleAddToCart} className="mt-5 bg-[#ef4444] text-white font-medium -py-1 px-4 rounded transition-all hover:bg-yellow-500 active:scale-95">
                         Add to Cart
                       </button>
                     </div>

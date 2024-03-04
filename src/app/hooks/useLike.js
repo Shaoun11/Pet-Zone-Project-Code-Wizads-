@@ -11,7 +11,7 @@ const useLike = () => {
         enabled: !loader,
         queryFn: async () => {
             console.log('My user', user)
-            const res = await axios.get(`http://localhost:5001/users`);
+            const res = await axios.get(`https://pet-zone-project-next-js.vercel.app/users`);
             const allUser = res.data;
             const myUser = allUser.find((u) => u.email === user.email);
             console.log(myUser);

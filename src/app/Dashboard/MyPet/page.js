@@ -42,7 +42,7 @@ const MyAddedPet = () => {
 
     return (
         <Dashboard>
-            <div>
+            <div className='lg:ml-72'>
                 <div>
                     <h1 className='text-5xl font-semibold mt-5 text-center'>My Added <span className='text-red-500'>Pet</span></h1>
                 </div>
