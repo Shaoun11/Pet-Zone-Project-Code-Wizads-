@@ -9,9 +9,9 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import useCart from "@/app/hooks/useCart";
 import { AuthContext } from "@/app/Provider/AuthProvider";
-
 const Page = () => {
   const { mycart, refetch } = useCart();
+ 
   console.log(mycart);
   const totalPrice = mycart.reduce(
     (total, item) => total + parseFloat(item.price) * item.quantity,
@@ -26,7 +26,7 @@ const Page = () => {
   //     const fetchData = async () => {
   //         try {
   //             const response = await fetch(
-  //                 'http://localhost:5001/mycart'
+  //                 'https://pet-zone-project-next-js.vercel.app/mycart'
   //             );
   //             const data = await response.json();
   //             setAllCart(data);
@@ -69,7 +69,7 @@ const Page = () => {
 
   return (
     <Dashboard>
-      <div>
+      <div className="lg:ml-72">
         <div>
           <h1 className="text-5xl font-semibold mt-5 text-center">
             My <span className="text-red-500">Cart</span>
@@ -207,11 +207,13 @@ const Page = () => {
                         </div>
                         <div>
                           {mycart.length ? (
-                            <Link href="/Dashboard/Payment">
-                              <button className="btn w-full border-none bg-red-500 text-white text-lg">
-                                Payment
+                              
+                              <Link href="/Dashboard/Payment">
+                              <button className="btn hover:bg-yellow-500 w-full border-none bg-red-500 text-white text-lg">
+                                Checkout
                               </button>
                             </Link>
+                        
                           ) : (
                             <button
                               disabled
@@ -221,44 +223,12 @@ const Page = () => {
                               <p className="text-lg">
                                 <MdOutlinePayment />
                               </p>{" "}
-                              Payment{" "}
+                             Checkout{" "}
                             </button>
                           )}
                         </div>
                       </div>
-                      <div className="flex flex-col rounded-md justify-center px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-50 dark:bg-red-500  space-y-6">
-                        <h3 className="text-xl dark:text-white font-semibold leading-5 text-gray-800">
-                          Shipping
-                        </h3>
-                        <div className="flex justify-between items-start w-full">
-                          <div className="flex justify-center items-center space-x-4">
-                            <div className="w-8 h-8">
-                              <img
-                                className="w-full h-full"
-                                alt="logo"
-                                src="https://i.ibb.co/L8KSdNQ/image-3.png"
-                              />
-                            </div>
-                            <div className="flex flex-col justify-start items-center">
-                              <p className="text-lg leading-6 dark:text-white font-semibold text-gray-800">
-                                DPD Delivery
-                                <br />
-                                <span className="font-normal">
-                                  Delivery with 24 Hours
-                                </span>
-                              </p>
-                            </div>
-                          </div>
-                          <p className="text-lg font-semibold leading-6 dark:text-white text-gray-800">
-                            $8.00
-                          </p>
-                        </div>
-                        <div className="w-full flex justify-center items-center">
-                          <button className="hover:bg-black rounded-md dark:bg-white dark:text-gray-800 dark:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800 py-5 w-96 md:w-full bg-gray-800 text-base font-medium leading-4 text-white">
-                            View Carrier Details
-                          </button>
-                        </div>
-                      </div>
+                      
                     </div>
                   </div>
                   <div className="bg-gray-100 rounded-md w-full xl:w-96 flex justify-between items-center md:items-start px-4 py-6 md:p-6 xl:p-8 flex-col">
@@ -326,6 +296,7 @@ const Page = () => {
             </>
           )}
         </div>
+      
       </div>
     </Dashboard>
   );

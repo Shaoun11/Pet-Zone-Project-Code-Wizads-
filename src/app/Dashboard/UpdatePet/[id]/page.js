@@ -78,7 +78,7 @@ const UpdatePet = ({ params }) => {
 
     return (
         <Dashboard>
-            <div>
+            <div className='lg:ml-72'>
                 <p className="text-2xl mt-5 ml-6 font-semibold mb-2">
                     Update Pet
                 </p>

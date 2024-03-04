@@ -8,7 +8,7 @@ const AddedReview = ({ _id }) => {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const response = await fetch(`http://localhost:5001/reviews`);
+                const response = await fetch(`https://pet-zone-project-next-js.vercel.app/reviews`);
                 const data = await response.json();
                 setReviews(data);
             } catch (error) {

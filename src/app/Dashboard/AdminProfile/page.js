@@ -8,7 +8,7 @@ const Page = () => {
     const { user } = useContext(AuthContext);
     return (
         <Dashboard>
-        <div >
+        <div className='lg:ml-72' >
   
 
     <div

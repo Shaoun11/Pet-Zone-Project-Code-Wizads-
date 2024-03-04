@@ -48,7 +48,7 @@ const Page = () => {
         <div>
        <Dashboard>
  
-       <div>
+       <div className='lg:ml-72'>
             <div className="mb-14">
                 <p className="text-2xl mt-5 ml-6 font-semibold mb-2">
                     Reviews

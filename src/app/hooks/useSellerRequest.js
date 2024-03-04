@@ -6,7 +6,7 @@ const useSellerRequest = () => {
     const { data: sellerRequest = [], isLoading, refetch } = useQuery({
         queryKey: ["sellerRequest"],
         queryFn: async () => {
-            const res = await axios.get(`http://localhost:5001/seller`);
+            const res = await axios.get(`https://pet-zone-project-next-js.vercel.app/seller`);
             return res.data;
         },
     });

@@ -55,9 +55,9 @@ const Page = () => {
 
   return (
     <Dashboard>
-      <div>
+      <div className='lg:ml-72'>
 
-        <div className="lg:flex   md:flex items-center justify-center">
+        <div className="lg:flex    md:flex items-center justify-center">
           <div>
             <img className="h-[350px]" src="https://i.ibb.co/HnP9Qdj/360-F-254878309-P62oik-Pc8zu9-TQjr4j2-Xp-Ekl5d-FBa6ep-removebg-preview.png" alt="" />
           </div>

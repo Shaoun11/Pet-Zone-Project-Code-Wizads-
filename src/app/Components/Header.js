@@ -47,7 +47,7 @@ const Navbar = () => {
     const newSeller = { name, email, image, role };
 
     // fetch("https://pet-zone-project-next-js.vercel.app/mypet", {
-    fetch("http://localhost:5001/seller", {
+    fetch("https://pet-zone-project-next-js.vercel.app/seller", {
       method: "POST",
       headers: {
         "content-type": "application/json"
