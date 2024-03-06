@@ -6,6 +6,7 @@ import { TiDelete } from "react-icons/ti";
 import { FaComment } from "react-icons/fa";
 import { FcLike } from "react-icons/fc";
 import { FcLikePlaceholder } from "react-icons/fc";
+import { FaDeleteLeft } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import axios from "axios";
 import useLike from "../hooks/useLike";
@@ -14,6 +15,8 @@ import useLike from "../hooks/useLike";
 const HelpDeskPost = () => {
 
   const [allPost, setAllPost] = useState([]);
+  const [comment, setComment] = useState("");
+  const [currentPost, setCurrentPost] = useState({});
   const { user } = useContext(AuthContext);
   const { myuser } = useLike();
   console.log(myuser);
@@ -113,6 +116,56 @@ const HelpDeskPost = () => {
     }
   }
 
+  const handleComment = (post) => {
+    setCurrentPost(post);
+  }
+
+  const addComment = async (userId, userName, userPhoto) => {
+    const date = new Date();
+    const localDate = date.toLocaleString();
+    if (comment.trim() !== '') {
+      try {
+        const res = await axios.put(`http://localhost:5001/helpdesk/addcomment`, { id: currentPost._id, comment, postedTime: localDate, userId, userName, userPhoto });
+        console.log("Add comment", res.data);
+        const updatedPost = res.data;
+
+        setAllPost(allPost.map(post => {
+          if (post._id === updatedPost._id) {
+            return updatedPost;
+          }
+          return post;
+        }));
+
+        setComment("");
+      }
+      catch (error) {
+        console.log(error);
+      }
+    }
+  }
+
+  const removeComment = async (postId, commentId) => {
+    console.log("postid", postId);
+    console.log("commentid", commentId);
+    try {
+      const res = await axios.put(`http://localhost:5001/helpdesk/removecomment/${postId}/${commentId}`);
+      console.log("Comment removed ", res.data);
+
+      setAllPost(allPost.map(post => {
+        if (post._id === postId) {
+          return {
+            ...post,
+            comment: post.comment.filter(comment => comment.commentId !== commentId)
+          };
+        }
+        return post;
+      }));
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+
 
 
   return (
@@ -165,21 +218,76 @@ const HelpDeskPost = () => {
           />
           <div className="flex items-center pl-3 pb-3 pr-3 justify-between">
             <div className="flex items-center space-x-4">
-              <button className="flex items-center focus:outline-none"></button>
-              <button className="flex items-center focus:outline-none">
-               <FaComment className="text-red-500"></FaComment>
-                <span className="ml-1 text-sm text-gray-600">Comment</span>
+              <button className="flex items-center gap-2" onClick={() => { document.getElementById(`comment_modal_${helpdesk._id}`).showModal(); handleComment(helpdesk) }}>
+                <FaComment className="text-red-500"></FaComment>
+                <span className="text-sm text-gray-600">Comments</span>
               </button>
+              <dialog id={`comment_modal_${helpdesk._id}`} className="modal">
+                <div className="modal-box">
+                  <form method="dialog">
+                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                  </form>
+                  <h3 className="font-bold text-lg">All Comments</h3>
+                  <div>
+                    <div className="my-6">
+                      {
+                        helpdesk.comment && helpdesk.comment.length > 0 ?
+                          <>
+                            {
+                              helpdesk.comment.map((c) => (
+                                <div key={c._id}>
+                                  <div className="mb-8">
+                                    <div className="flex items-center justify-between gap-2">
+                                      <div className="flex items-center gap-2">
+                                        <img className="w-8 rounded-full" src={c.postedBy?.userPhoto} />
+                                        <p className="text-sm font-bold">{c.postedBy?.userName}</p>
+                                        {
+                                          myuser._id == c.postedBy?.userId && (
+                                            <button onClick={() => removeComment(helpdesk._id, c.commentId)} className="text-red-400"><FaDeleteLeft /></button>
+                                          )
+                                        }
+                                      </div>
+                                      <p className="text-xs font-medium">{formatDate(c.postedTime)}</p>
+                                    </div>
+                                    <p className="text-xs ml-10 text-justify">{c.text}</p>
+                                  </div>
+                                </div>
+                              ))
+                            }
+                          </>
+                          :
+                          <>
+                            <p className="text-center text-xl">No Comments Yet</p>
+                          </>
+                      }
+                    </div>
+                    <div>
+                      <form method="dialog" className="py-4" onClick={(e) => { e.preventDefault(); addComment(myuser._id, myuser.name, myuser.photo); }}>
+                        <h3 className="font-bold text-lg mt-5 mb-3">Add your comment here</h3>
+                        <div>
+                          <input type="text" value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Write Something" className="textarea textarea-bordered w-4/5 rounded-sm" />
+                          <button className="bg-red-500 text-white normal-case py-2 px-3 rounded-sm ml-3">Submit</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </dialog>
             </div>
             <div className="text-sm text-gray-600 flex">
               {
                 helpdesk && helpdesk.like ?
-                  <span className="flex">{helpdesk.like.length} {helpdesk.like.length <= 1 ? <FcLike className="mt-[2px]"></FcLike> : <FcLike className="mt-[2px]"></FcLike>}</span>
+                  <span className="flex">{helpdesk.like.length} <FcLike className="mt-[2px]"></FcLike></span>
                   :
-                 <><span> 0 </span>  </> 
+                  <><span> 0 <FcLike className="mt-[2px]"></FcLike></span>  </>
               }
               |
-              5 comments
+              {
+                helpdesk && helpdesk.comment ?
+                  <span> {helpdesk.comment.length} {helpdesk.comment.length <= 1 ? "Comment " : "Comments "}</span>
+                  :
+                  <span> 0 Comment </span>
+              }
             </div>
           </div>
         </div>)
