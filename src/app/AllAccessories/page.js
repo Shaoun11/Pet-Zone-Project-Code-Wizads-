@@ -94,7 +94,6 @@ const AllAccessories = () => {
                 <input type="checkbox" onChange={() => handleTypeChange('dog', true)} className="animal-checkbox checkbox mt-2" />
                 <div className="pt-2 pl-3">Dog Items</div>
               </label>
-
               <label className="flex">
                 <input type="checkbox" onChange={() => handleTypeChange('bird', true)} className="animal-checkbox checkbox mt-2" />
                 <div className="pt-2 pl-3">Bird Items</div>
