@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import AccessoriesCard from '../Components/AccessoriesCard';
 import Navber from '../Components/Header';
 import Footer from '../Components/Footer';
-
+import { GrPowerReset } from "react-icons/gr";
 const AllAccessories = () => {
   const [accessories, setAccessories] = useState([]);
   const [selectedAnimalTypes, setSelectedAnimalTypes] = useState([]);
@@ -43,7 +43,6 @@ const AllAccessories = () => {
 
   const handleReset = () => {
     setSearchQuery('');
-    document.getElementById('table-search1').value = '';
     document.getElementById('table-search2').value = '';
     setSelectedAnimalTypes([]);
     setSelectedCategoryTypes([]);
@@ -70,51 +69,22 @@ const AllAccessories = () => {
     <>
       <Navber></Navber>
       <div id="slide1" className=" mb-6 bg-[#f0f8ff] relative sm:w-full w-[410px] h-[600px] sm:h-[600px] ">
-                    <img  src='https://f.nooncdn.com/mpcms/EN0003/assets/0a6a5c4d-b686-438a-8b05-32e61321abce.png?format=png' className="sm:w-full object-cover w-[410px] h-[500px] sm:h-[600px]  "  alt="Pet Banner" />
+                    <img  src='https://i.ibb.co/QFMJLzz/PRODUCTS-1.png' className="sm:w-full object-cover w-[410px] h-[500px] sm:h-[600px]  "  alt="Pet Banner" />
 </div>
       <div className='flex flex-col md:flex-row'>
 
-        {/* For Mobile Device */}
-        <div className="py-4 mx-auto md:hidden lg:hidden">
-          <div className="relative mt-1">
-            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg">
-                <path fillRule="evenodd"
-                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                  clipRule="evenodd"></path>
-              </svg>
-            </div>
-            <input type="text" id="table-search1" className="bg-[#ffffff1e] border border-black text-gray-900 text-sm rounded-lg block w-full pl-10 p-2.5"
-              placeholder="Search for items" onChange={handleSearchChange} />
-          </div>
-        </div>
 
 
         <div className='h-full hidden  md:block w-1/6 md:w-2/6 lg:w-1/5'>
           <div className='pl-10'>
-            {/* Search Functionality for MD & LG*/}
-            <div className="pt-7">
-              <div className="relative mt-1 mr-10">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                  <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fillRule="evenodd"
-                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                      clipRule="evenodd"></path>
-                  </svg>
-                </div>
-                <input type="text" id="table-search2" className="bg-[#ffffff1e] border border-black text-gray-900 text-sm rounded-lg block w-full pl-10 p-2.5 table-search"
-                  placeholder="Search for items" onChange={handleSearchChange} />
-              </div>
-            </div>
+        
 
 
             {/* Animal checkbox Items */}
             <div className='flex justify-between md:flex-wrap'>
               <h2 className='font-semibold text-2xl mt-7'>Animals</h2>
-              <h2 onClick={handleReset} className='lg:mt-7 md:my-3 mr-10 btn btn-sm btn-outline cursor-pointer items-center justify-center rounded-md border py-2 px-8 text-center text-gray-500 transition duration-150 ease-in-out hover:translate-y-1 hover:bg-[#ef4444] hover:text-white'>
-                reset
+              <h2 onClick={handleReset} className='lg:mt-8 md:my-3 mr-10 btn btn-sm btn-outline cursor-pointer items-center justify-center rounded-md border py-2 px-8 text-center text-gray-500 transition duration-150 ease-in-out hover:translate-y-1 hover:bg-[#ef4444] hover:text-white'>
+                <GrPowerReset></GrPowerReset>
               </h2>
             </div>
             <hr className='w-32 border border-black my-2 -mt-[3px]' />
@@ -183,7 +153,21 @@ const AllAccessories = () => {
 
 
         <div className='bg-[#9ab5cd33] rounded-md h-full flex-1'>
-      
+        {/* For Mobile Device */}
+        <div className="py-4 mx-auto w-3/5 ">
+          <div className="relative mt-1">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fillRule="evenodd"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                  clipRule="evenodd"></path>
+              </svg>
+            </div>
+            <input type="text" id="table-search2" className="bg-white border border-black text-gray-900 text-sm rounded-lg block w-full pl-10 p-2.5"
+              placeholder="Search for items" onChange={handleSearchChange} />
+          </div>
+        </div>
           {
             filteredAccessories.length === 0 ? <>
               <p className='text-3xl w-full h-[80vh] flex justify-center items-center'>No item found in this Category for this animal.</p>
