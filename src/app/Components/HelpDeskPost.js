@@ -125,7 +125,7 @@ const HelpDeskPost = () => {
     const localDate = date.toLocaleString();
     if (comment.trim() !== '') {
       try {
-        const res = await axios.put(`http://localhost:5001/helpdesk/addcomment`, { id: currentPost._id, comment, postedTime: localDate, userId, userName, userPhoto });
+        const res = await axios.put(`https://pet-zone-project-next-js.vercel.app/helpdesk/addcomment`, { id: currentPost._id, comment, postedTime: localDate, userId, userName, userPhoto });
         console.log("Add comment", res.data);
         const updatedPost = res.data;
 
@@ -148,7 +148,7 @@ const HelpDeskPost = () => {
     console.log("postid", postId);
     console.log("commentid", commentId);
     try {
-      const res = await axios.put(`http://localhost:5001/helpdesk/removecomment/${postId}/${commentId}`);
+      const res = await axios.put(`https://pet-zone-project-next-js.vercel.app/helpdesk/removecomment/${postId}/${commentId}`);
       console.log("Comment removed ", res.data);
 
       setAllPost(allPost.map(post => {
