@@ -59,7 +59,8 @@ const Page = () => {
 
         <div className="lg:flex    md:flex items-center justify-center">
           <div>
-            <img className="h-[350px]" src="https://i.ibb.co/HnP9Qdj/360-F-254878309-P62oik-Pc8zu9-TQjr4j2-Xp-Ekl5d-FBa6ep-removebg-preview.png" alt="" />
+            <img className="h-[450px]" src="https://i.ibb.co/mT1Y9JM/0qqmfw8znfvndvx10w5qqp71bh-image-removebg-preview.png" alt="" />
+            <h1 className='text-center text-lg font-semibold -mt-24'>Add Your New For Sell</h1>
           </div>
           <div className="flex  items-center justify-center p-12">
 
@@ -113,7 +114,7 @@ const Page = () => {
                         className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       />
                     </div>
-                  </div>
+               
 
                   <div className="mb-5">
                     <label
@@ -130,7 +131,7 @@ const Page = () => {
                       className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                     />
                   </div>
-
+                  </div>
                   <div className="w-full px-3 sm:w-1/2">
                     <div className="mb-5">
                       <label
@@ -147,8 +148,8 @@ const Page = () => {
                         className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       />
                     </div>
-
-                    <div className="w-full sm:w-1/2">
+                  
+               
                       <div className="mb-5">
                         <label
                           for="color"
@@ -164,8 +165,8 @@ const Page = () => {
                           className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                         />
                       </div>
-                    </div>
-
+                      </div>
+                    <div className="w-full px-3 sm:w-1/2">
                     <div className="mb-5">
                       <label
                         for="breed"
@@ -197,7 +198,8 @@ const Page = () => {
                         className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                       />
                     </div>
-                  </div>
+                    </div>
+                 
                   <div className="w-full px-3 sm:w-1/2">
                     <div className="mb-5">
                       <label
@@ -235,7 +237,7 @@ const Page = () => {
                   ></textarea>
                 </div>
                 <div>
-                  <input type='submit' value="Add Contest" className="hover:shadow-form rounded-md bg-red-500 py-3 px-8 text-base font-semibold text-white outline-none" />
+                  <input type='submit' value="Add Pet" className="hover:shadow-form rounded-md bg-red-500 py-3 px-8 text-base font-semibold text-white outline-none" />
                 </div>
               </form>
             </div>

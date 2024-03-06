@@ -69,6 +69,9 @@ const AllAccessories = () => {
   return (
     <>
       <Navber></Navber>
+      <div id="slide1" className=" mb-6 bg-[#f0f8ff] relative sm:w-full w-[410px] h-[600px] sm:h-[600px] ">
+                    <img  src='https://f.nooncdn.com/mpcms/EN0003/assets/0a6a5c4d-b686-438a-8b05-32e61321abce.png?format=png' className="sm:w-full object-cover w-[410px] h-[500px] sm:h-[600px]  "  alt="Pet Banner" />
+</div>
       <div className='flex flex-col md:flex-row'>
 
         {/* For Mobile Device */}
@@ -88,7 +91,7 @@ const AllAccessories = () => {
         </div>
 
 
-        <div className='h-full hidden md:block w-1/6 md:w-2/6 lg:w-1/5'>
+        <div className='h-full hidden  md:block w-1/6 md:w-2/6 lg:w-1/5'>
           <div className='pl-10'>
             {/* Search Functionality for MD & LG*/}
             <div className="pt-7">
@@ -179,7 +182,8 @@ const AllAccessories = () => {
         </div>
 
 
-        <div className='bg-[#8eb1cf33] h-full flex-1'>
+        <div className='bg-[#9ab5cd33] rounded-md h-full flex-1'>
+      
           {
             filteredAccessories.length === 0 ? <>
               <p className='text-3xl w-full h-[80vh] flex justify-center items-center'>No item found in this Category for this animal.</p>

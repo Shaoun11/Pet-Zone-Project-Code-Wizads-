@@ -67,7 +67,7 @@ const Page = () => {
             <div className='lg:ml-72'>
                 <div className="lg:flex   md:flex items-center justify-center">
              <div>
-                 <img className="h-[350px]" src="https://i.ibb.co/HnP9Qdj/360-F-254878309-P62oik-Pc8zu9-TQjr4j2-Xp-Ekl5d-FBa6ep-removebg-preview.png" alt="" />
+                 <img className="h-[350px]" src="https://i.ibb.co/LksTcw7/animal-de-estimacao-e-veterinario-24908-57966-removebg-preview.png" alt="" />
              </div>
                <div className="flex  items-center justify-center p-12">
      
