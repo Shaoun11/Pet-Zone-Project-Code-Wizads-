@@ -223,7 +223,7 @@ const HelpDeskPost = () => {
                 <span className="text-sm text-gray-600">Comments</span>
               </button>
               <dialog id={`comment_modal_${helpdesk._id}`} className="modal">
-                <div className="modal-box">
+                <div className="modal-box bg-white">
                   <form method="dialog">
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                   </form>
@@ -243,7 +243,7 @@ const HelpDeskPost = () => {
                                         <p className="text-sm font-bold">{c.postedBy?.userName}</p>
                                         {
                                           myuser._id == c.postedBy?.userId && (
-                                            <button onClick={() => removeComment(helpdesk._id, c.commentId)} className="text-red-400"><FaDeleteLeft /></button>
+                                            <button onClick={() => removeComment(helpdesk._id, c.commentId)} className="text-red-400 rounded-xl"><FaDeleteLeft /></button>
                                           )
                                         }
                                       </div>
@@ -262,11 +262,11 @@ const HelpDeskPost = () => {
                       }
                     </div>
                     <div>
-                      <form method="dialog" className="py-4" onClick={(e) => { e.preventDefault(); addComment(myuser._id, myuser.name, myuser.photo); }}>
+                      <form method="dialog" className="py-4 " onClick={(e) => { e.preventDefault(); addComment(myuser._id, myuser.name, myuser.photo); }}>
                         <h3 className="font-bold text-lg mt-5 mb-3">Add your comment here</h3>
                         <div>
-                          <input type="text" value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Write Something" className="textarea textarea-bordered w-4/5 rounded-sm" />
-                          <button className="bg-red-500 text-white normal-case py-2 px-3 rounded-sm ml-3">Submit</button>
+                          <input type="text" value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Write Something" className="textarea textarea-bordered w-9/12 bg-white border rounded-sm" />
+                          <button className="bg-red-500  text-white normal-case py-2 px-3 rounded-md ml-3">Comment</button>
                         </div>
                       </form>
                     </div>
