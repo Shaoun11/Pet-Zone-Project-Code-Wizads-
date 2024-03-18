@@ -4,6 +4,7 @@ import Navber from "./Components/Header";
 import Footer from "./Components/Footer";
 import AuthProvider from "./Provider/AuthProvider";
 import QueryClientProvider from "./Provider/TanstackProvider";
+import { Toaster } from "react-hot-toast";
 
 const firasans = Fira_Sans({ 
   subsets: ["latin"],
@@ -25,7 +26,7 @@ export default function RootLayout({ children }) {
         <AuthProvider>
        
           {children}
-        
+     
         </AuthProvider>
         </QueryClientProvider>
       </body>

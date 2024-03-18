@@ -1,5 +1,5 @@
 "use client";
-import Accessories from "./Components/Accessories";
+
 import Banner from "./Components/Banner";
 import BestPet from "./Components/BestPet";
 import BookingAccouncement from "./Components/BookingAccouncement";
@@ -12,11 +12,13 @@ import Footer from "./Components/Footer";
 import Gallery from "./Components/Gallery";
 import Navber from "./Components/Header";
 import OurServices from "./Components/OurService";
+import PetCare from "./Components/PetCare";
 import SubNavbar from "./Components/SubNav";
 
 export default function Home() {
   return (
     <main>
+
       <SubNavbar></SubNavbar>
       <hr className="h-px bg-red-200 border-0 "></hr>
       <Navber></Navber>
@@ -25,6 +27,7 @@ export default function Home() {
 
       <FeturedAccecories></FeturedAccecories>
       <BookingAccouncement></BookingAccouncement>
+      <PetCare></PetCare>
       <OurServices></OurServices>
       <Gallery></Gallery>
       <FAQSection></FAQSection>

@@ -46,10 +46,10 @@ const HelpDesk = () => {
       .then(res => {
         if (res.data.insertedId) {
           Swal.fire({
-            position: "top-end",
+            position: "center",
             icon: "success",
             title: 'Post added successfully',
-          })
+        })
             .then(() => {
               form.set("postContent", "");
               form.set("fileContent", "");

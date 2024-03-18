@@ -2,8 +2,11 @@
 import React, { useContext } from 'react';
 
 import { AuthContext } from '@/app/Provider/AuthProvider';
-import { Fade } from 'react-awesome-reveal';
 import Dashboard from "../page"
+import { AiOutlineFileDone } from 'react-icons/ai';
+import { TbTruckDelivery } from 'react-icons/tb';
+import { IoWalletOutline } from 'react-icons/io5';
+import { IoCartOutline } from "react-icons/io5";
 
 const Page = () => {
     const { user } = useContext(AuthContext);
@@ -47,23 +50,59 @@ const Page = () => {
             </svg>
           </span>
         </div>
-        <div
-                        className="grid px-7 mt-14 py-2  items-center justify-around grid-cols-3 gap-4 divide-x divide-solid ">
-                        <div className="col-span-1 flex flex-col items-center ">
-                            <span className="text-2xl font-bold dark:text-gray-500">4</span>
-                            <span className="text-lg font-medium 0">Your Cart</span>
-                        </div>
-                        <div className="col-span-1 px-3 flex flex-col items-center ">
-                            <span className="text-2xl font-bold dark:text-gray-500">
-                                2</span>
-                            <span className="text-lg font-medium">Total Purches</span>
-                        </div>
-                        <div className="col-span-1 px-3 flex flex-col items-center ">
-                            <span className="text-2xl font-bold dark:text-gray-500">
-                                546</span>
-                            <span className="text-lg font-medium">Points</span>
-                        </div>
-                    </div>
+        <div className="max-w-7xl mt-8 mx-auto">
+        <div className="p-6 bg text-white rounded-lg">
+          <div className="grid grid-cols-1 gap-6 mx-auto sm:grid-cols-2 xl:grid-cols-4">
+            <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-[#FF407D]">
+              <div className="flex justify-center p-2 rounded-lg sm:p-4  border-2">
+                <h1 className="text-4xl">
+                  <IoCartOutline />
+                </h1>
+              </div>
+              <div>
+                <p className="capitalize">Your Cart</p>
+                <p className="text-3xl font-semibold leadi">3</p>
+              </div>
+            </div>
+
+            <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-red-500">
+              <div className="flex justify-center p-2 rounded-lg sm:p-4 border-2">
+                <h1 className="text-4xl">
+                  <IoWalletOutline />
+                </h1>
+              </div>
+              <div>
+                <p className="capitalize">Unpaid</p>
+                <p className="text-3xl font-semibold leadi">7500</p>
+              </div>
+            </div>
+
+            <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-[#FF407D]">
+              <div className="flex justify-center p-2 rounded-lg sm:p-4 border-2">
+                <h1 className="text-4xl">
+                  <TbTruckDelivery />
+                </h1>
+              </div>
+              <div>
+                <p className="capitalize">Total order</p>
+                <p className="text-3xl font-semibold leadi">12</p>
+              </div>
+            </div>
+
+            <div className="flex p-4 space-x-4 rounded-lg md:space-x-6 bg-red-500">
+              <div className="flex justify-center p-2 rounded-lg sm:p-4 border-2">
+                <h1 className="text-4xl">
+                  <AiOutlineFileDone />
+                </h1>
+              </div>
+              <div>
+                <p className="capitalize">Completed</p>
+                <p className="text-3xl font-semibold leadi">17</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
         
       </div>
