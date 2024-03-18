@@ -6,9 +6,11 @@ import { updateProfile } from 'firebase/auth';
 import { imageUpload } from '../hooks/image';
 import Navber from '../Components/Header';
 
+
 const Register = () => {
     const { createUser,logInUserGoogle } = useContext(AuthContext);
     const [errorMessage, setErrorMessage] = useState("");
+  
     // const navigate = useNavigate();
 
     const handleRegister = async (e) => {
@@ -38,6 +40,7 @@ const Register = () => {
             .then(result => {
                 console.log(result.user);
                 // navigate("/");
+            
 
                 updateProfile(result.user, {
                     displayName: name,
@@ -61,6 +64,8 @@ const Register = () => {
                             console.log("User added to database");
                         }
                     })
+                    window.location.href = '/';
+                    Swal.fire("Register Successfully!");
             })
 
             .catch(error => {

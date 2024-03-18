@@ -2,6 +2,10 @@
 import React, { useContext, useState,useRef } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import Navber from '../Components/Header';
+import { Router, useRouter } from 'next/router';
+import { redirect } from 'next/dist/server/api-utils';
+import Link from 'next/link';
+import Swal from 'sweetalert2';
 
 
 
@@ -26,7 +30,8 @@ const Login = () => {
         logInUser(email, password)
             .then(result => {
                 console.log(result.user);
-                // navigate(location?.state ? location?.state : "/");
+                window.location.href = '/';
+                Swal.fire("Welcome to our website!");
             })
             .catch(error => {
                 console.error(error);
@@ -50,6 +55,8 @@ const Login = () => {
                     },
                     body: JSON.stringify(userInfo)
                 })
+                window.location.href = '/';
+                Swal.fire("Welcome to our website!");
             })
             .catch(error => {
                 console.error(error);
@@ -154,7 +161,7 @@ const Login = () => {
               <a
                 href="#"
                 onClick={handleGoogleLogIn}
-                className="flex items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-200 hover:bg-gray-500 rounded"
+                className="flex items-center justify-center space-x-2 text-gray-600 my-2 py-2 bg-gray-200 hover:bg-gray-200 rounded"
               >
                 <svg
                   className="w-5 h-5"

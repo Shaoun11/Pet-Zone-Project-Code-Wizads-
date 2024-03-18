@@ -127,7 +127,7 @@ const SellerRequest = () => {
                                         <td>{user.name}</td>
                                         <td>{user.email}</td>
                                         <td>
-                                            <button onClick={() => handleToggleSellerUser(user)} className="btn btn-ghost text-red-500 text-lg">
+                                        <button onClick={() => handleToggleSellerUser(user)} className="px-5 py-2 bg-red-500 rounded-full shadow-sm text-white text-xs font-semibold leading-4">
                                                 {
                                                     user.role === "user" ? "Seller" : "User"
                                                 }

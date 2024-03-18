@@ -9,6 +9,7 @@ import Footer from "../Components/Footer";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import HOCAuth from "@/utils/HOCAuth";
 import { AuthContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Page = () => {
 
@@ -33,7 +34,13 @@ const Page = () => {
           .then(res => {
             if(res.data.insertedId){
               console.log('Booking Added to Database')
-              notify();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: 'Your pet is posted',
+                showConfirmButton: false,
+                timer: 1500
+              });
             }
           })
           .catch(error => console.log(error))
